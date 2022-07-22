@@ -22,7 +22,28 @@
     "description": { "default": "FPS Core 1.14 Banner description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "FPS Core 1.14 Banner"
+      "description": "FPS Core 1.14 Banner",
+
+      "bannerTitle": "FPS Core 1.14 Banner Default",
+
+      "pageInfoStyle": "\"paddingBottom\":\"20px\",\"backgroundColor\":\"#dcdcdc\";\"borderLeft\":\"solid 3px #c4c4c4\"",
+
+      "bannerStyleChoice": "corpDark1",
+      "bannerStyle": "{\"color\":\"white\",\"backgroundColor\":\"#005495\",\"fontSize\":\"larger\",\"fontWeight\":600,\"fontStyle\":\"normal\",\"padding\":\"0px 10px\",\"height\":\"48px\",\"cursor\":\"pointer\"}",
+      "bannerCmdStyle": "{\"color\":\"white\",\"backgroundColor\":\"#005495\",\"fontSize\":16,\"fontWeight\":\"normal\",\"fontStyle\":\"normal\",\"padding\":\"7px 4px\",\"marginRight\":\"0px\",\"borderRadius\":\"5px\",\"cursor\":\"pointer\"}",
+
+      "propsTitleField":  "Page Properties",
+
+      "defPinState": "normal",
+      "forcePinState": false,
+
+      "infoElementChoice": "IconName=Unknown",
+      "infoElementText": "Question mark circle",
+
+      "showGoToHome": true,
+      "showGoToParent": true,
+      "homeParentGearAudience": "Everyone"
+      
     }
   }]
 }
