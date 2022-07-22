@@ -12,11 +12,8 @@ import * as strings from 'FpsCore114BannerWebPartStrings';
 import FpsCore114Banner from './components/FpsCore114Banner';
 import { IFpsCore114BannerProps } from './components/IFpsCore114BannerProps';
 
-export interface IFpsCore114BannerWebPartProps {
-  description: string;
-}
 
-export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsCore114BannerWebPartProps> {
+export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsCore114BannerProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
