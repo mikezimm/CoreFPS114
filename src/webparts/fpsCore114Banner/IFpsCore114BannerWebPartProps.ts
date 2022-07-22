@@ -10,6 +10,8 @@ import { IPinMeState } from "@mikezimm/npmfunctions/dist/PinMe/FPSPinMenu";
 
 import { exportIgnorePropsFPS, importBlockPropsFPS } from '@mikezimm/npmfunctions/dist/WebPartInterfaces/ImportProps';
 
+import { IMinWPBannerProps } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup";
+
 //Specific for this web part
 export const exportIgnorePropsThis = [ ];
 
@@ -34,7 +36,64 @@ export const changePropertyGroupX = [ 'showSomeProps', 'showCustomProps' , 'show
 export const changeWebPartStyles = [ 'h1Style', 'h2Style' ,'h3Style' , 'pageInfoStyle', 'tocStyle', 'propsStyle' ];
 
 
-export interface IFpsCore114BannerWebPartProps {
+export interface IFpsCore114BannerWebPartProps extends IMinWPBannerProps {
+  
+    showTOC: boolean;
+    // minHeadingToShow: IMinHeading;
     description: string;
+    TOCTitleField: string;
+    tocExpanded: boolean;
+  
+    h1Style: string;
+    h2Style: string;
+    h3Style: string;
+    pageInfoStyle: string;
+    tocStyle: string;
+    propsStyle: string;
+  
+    showSomeProps: boolean;
+    showCustomProps: boolean;
+    showOOTBProps: boolean;
+    showApprovalProps: boolean;
+    propsExpanded: boolean;
+  
+    //Copied from AdvancedPagePropertiesWebPart.ts
+    propsTitleField: string;
+    selectedProperties: string[];
+  
+    relatedStyle: string;
+  
+    related1heading: string;
+    related1showItems: boolean;
+    related1isExpanded: boolean;
+    related1web: string;
+    related1listTitle: string;
+    related1AreFiles: boolean;   // Used to include ServerRedirectedEmbedUrl in fetch for alt-click
+    related1restFilter: string;
+    related1linkProp: string; // aka FileLeaf to open file name, if empty, will just show the value
+    related1displayProp: string;
+  
+    related2heading: string;
+    related2showItems: boolean;
+    related2isExpanded: boolean;
+    related2web: string;
+    related2listTitle: string;
+    related2AreFiles: boolean;   // Used to include ServerRedirectedEmbedUrl in fetch for alt-click
+    related2restFilter: string;
+    related2linkProp: string; // aka FileLeaf to open file name, if empty, will just show the value
+    related2displayProp: string;
+  
+    pageLinksheading: string;
+    pageLinksshowItems: boolean;
+    pageLinksisExpanded: boolean;
+    pageLinksweb: string;
+    pageLinkslistTitle: string;
+    pageLinksrestFilter: string;
+    pageLinkslinkProp: string; // aka FileLeaf to open file name, if empty, will just show the value
+    pageLinksdisplayProp: string;
+    canvasLinks: boolean;
+    canvasImgs: boolean;
+    ignoreDefaultImages: boolean;
+    linkSearchBox: boolean;
+ 
   }
-
