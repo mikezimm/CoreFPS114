@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "fps-core-114",
+    "libraryId": "55236ec0-eaf3-4fcc-b635-12848f6e6b25",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "FPSCore114",
+    "solutionShortDescription": "FPSCore114 description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
