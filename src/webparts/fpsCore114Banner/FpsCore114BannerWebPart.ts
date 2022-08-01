@@ -36,6 +36,7 @@ import { webpartInstance, } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSDo
 import { applyHeadingCSS } from '@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadingFunctions';
 import { renderCustomStyles } from '@mikezimm/npmfunctions/dist/WebPartFunctions/MainWebPartStyleFunctions';
 import { updateBannerThemeStyles } from '@mikezimm/npmfunctions/dist/WebPartFunctions/BannerThemeFunctions';
+import { expandoOnInit } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/WebPartOnInit';
 
 import { replaceHandleBars } from '@mikezimm/npmfunctions/dist/Services/Strings/handleBars';
 
@@ -44,10 +45,10 @@ import { replaceHandleBars } from '@mikezimm/npmfunctions/dist/Services/Strings/
 import { FPSOptionsGroupBasic, } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
 import { FPSBanner3BasicGroup,FPSBanner3NavGroup, FPSBanner3ThemeGroup } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
 import { FPSBanner3VisHelpGroup } from '@mikezimm/npmfunctions/dist/CoreFPS/FPSOptionsGroupVisHelp';
-import { FPSPinMePropsGroup } from '@mikezimm/npmfunctions/dist/PinMe/FPSOptionsGroupPinMe';
+import { FPSPinMePropsGroup } from '@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSOptionsGroupPinMe';
 import { buildRelatedItemsPropsGroup } from '@mikezimm/npmfunctions/dist/RelatedItems/RelatedItemsPropGroup';
 
-import { FPSOptionsExpando, expandAudienceChoicesAll } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsExpando'; //expandAudienceChoicesAll
+import { FPSOptionsExpando, expandAudienceChoicesAll } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/FPSOptionsExpando'; //expandAudienceChoicesAll
 
 import { WebPartInfoGroup, } from '@mikezimm/npmfunctions/dist/Services/PropPane/zReusablePropPane';
 
@@ -131,7 +132,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   private _unqiueId;
   private _validDocsContacts: string = '';
 
-  private trickyApp = 'FPS PageInfo';
+  private trickyApp = 'FPS Core114';
   private wpInstanceID: any = webpartInstance( this.trickyApp );
 
   private FPSUser: IFPSUser = null;
@@ -148,6 +149,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   private forceBanner = true ;
   private modifyBannerTitle = true ;
   private modifyBannerStyle = true ;
+  private enableExpandoramic = true ;
 
   private  expandoDefault = false;
   // private filesList: any = [];
@@ -188,10 +190,15 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
       // this.presetCollectionDefaults();
       this.sitePresets = applyPresetCollectionDefaults( this.sitePresets, PreConfiguredProps, this.properties, this.context.pageContext.web.serverRelativeUrl ) ;
 
+      //This indicates if its SPA, Teams etc.... always keep.
       this.properties.pageLayout =  this.context['_pageLayoutType']?this.context['_pageLayoutType'] : this.context['_pageLayoutType'];
+
+      
 
       this.FPSUser = getFPSUser( this.context as any, links.trickyEmails, this.trickyApp ) ;
       console.log( 'FPSUser: ', this.FPSUser );
+
+      expandoOnInit( this.properties, this.context.domElement, this.displayMode );
 
       updateBannerThemeStyles( this.properties, 'corpDark1', false, this.properties.defPinState );
  
@@ -221,7 +228,8 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
    let exportProps = buildExportProps( this.properties , this.wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
 
    let bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this.beAReader, this.FPSUser, repoLink.desc, 
-       this.properties, repoLink, exportProps, strings , this.domElement.clientWidth, this.context, this.modifyBannerTitle, this.forceBanner );
+       this.properties, repoLink, exportProps, strings , this.domElement.clientWidth, this.context, this.modifyBannerTitle, 
+       this.forceBanner, this.enableExpandoramic );
 
     const element: React.ReactElement<IFpsCore114BannerProps> = React.createElement(
       FpsCore114Banner,
@@ -367,8 +375,10 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
           },
           displayGroupsAsAccordion: true, //DONT FORGET THIS IF PROP PANE GROUPS DO NOT EXPAND
           groups: [
-            WebPartInfoGroup( links.gitRepoPageInfoSmall, 'Best TOC and Page Info available :)' ),
+            WebPartInfoGroup( repoLink, 'Sample FPS Banner component :)' ),
             FPSPinMePropsGroup, //End this group  
+
+            FPSBanner3VisHelpGroup( this.context, this.onPropertyPaneFieldChanged, this.properties ),
             FPSBanner3BasicGroup( this.forceBanner , this.modifyBannerTitle, this.properties.showBanner, this.properties.infoElementChoice === 'Text' ? true : false, true ),
             FPSBanner3NavGroup(),
             FPSBanner3ThemeGroup( this.modifyBannerStyle, this.properties.showBanner, this.properties.lockStyles, ),

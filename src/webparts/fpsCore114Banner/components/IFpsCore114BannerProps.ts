@@ -6,7 +6,7 @@ import { DisplayMode } from '@microsoft/sp-core-library';
 
 import { IWebpartHistory, } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/Interface';
 
-import { IPinMeState, IFPSPinMenu } from "@mikezimm/npmfunctions/dist/PinMe/FPSPinMenu";
+import { IPinMeState, IFPSPinMenu } from "@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMenu";
 import { ISitePreConfigProps, } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
 
 export interface IFpsCore114BannerProps {

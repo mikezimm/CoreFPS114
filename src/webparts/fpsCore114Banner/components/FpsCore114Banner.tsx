@@ -8,11 +8,10 @@ import { createBannerStyleObj, } from '@mikezimm/npmfunctions/dist/HelpPanelOnNP
 import { saveViewAnalytics } from '../CoreFPS/Analytics';
 import FetchBanner, {  } from '../CoreFPS/FetchBannerElement';
 
-
 //Use this to add more console.logs for this component
-const urlParams = new URLSearchParams( window.location.search );
-const fpsconsole = urlParams.get( 'fpsconsole' ) === 'true' ? true : false;
-const consolePrefix = 'fpsconsole: FpsCore114Banner';
+const urlParams : URLSearchParams = new URLSearchParams( window.location.search );
+const fpsconsole : boolean = urlParams.get( 'fpsconsole' ) === 'true' ? true : false;
+const consolePrefix: string = 'fpsconsole: FpsCore114Banner';
 
 export default class FpsCore114Banner extends React.Component<IFpsCore114BannerProps, IFpsCore114BannerState > {
 

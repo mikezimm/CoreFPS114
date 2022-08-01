@@ -25,26 +25,13 @@ export const WPForceEverywhere : IPreConfigSettings = {
     source: 'WPForceEverywhere',
     location: '*',
     props: {
-        // relatedStyle: '',
-
-        // pageLinksheading: 'Images and Links',
-        // pageLinksshowItems: true,
-        // pageLinksisExpanded: false,
-        // canvasLinks: true,
-        // canvasImgs: true,
 
         showRepoLinks : true,
-        showExport : false,
-        
-        enableExpandoramic : false,
+        // showExport : false,
+
+        // enableExpandoramic : false,
         showBanner : true,
 
-        pageLinksweb: 'current',
-        pageLinkslistTitle: 'Site Pages',
-        pageLinksrestFilter: 'ID eq {{PageId}}',
-        pageLinkslinkProp: 'File/ServerRelativeUrl', // aka FileLeaf to open file name, if empty, will just show the value
-        pageLinksdisplayProp: 'FileLeafRef',
-        
     }
 };
 
@@ -53,38 +40,7 @@ export const WPPresetEverywhere : IPreConfigSettings = {
     source: 'WPPresetEverywhere',
     location: '*',
     props: {
-
-        propsExpanded: true,
-        propsTitleField: strings.bannerTitle,
-
-        related1web: 'current',
-        related2web: 'current',
-
-        related1showItems: false,
-        related2showItems: false,
-
-        related1heading: 'Related Items 1',
-        related2heading: 'Related Items 2',
-
-        related1AreFiles: false,
-        related2AreFiles: false,
-
-        relatedStyle: '',
-
-        pageLinksheading: 'Images and Links',
-        pageLinksshowItems: true,
-        pageLinksisExpanded: false,
-        canvasLinks: true,
-        canvasImgs: true,
-        linkSearchBox: true,
-        
-        ignoreDefaultImages: true,
-        // pageLinksweb: 'current',
-        // pageLinkslistTitle: 'Site Pages',
-        // pageLinksrestFilter: 'ID eq {{PageId}}',
-        // pageLinkslinkProp: 'File/ServerRelativeUrl', // aka FileLeaf to open file name, if empty, will just show the value
-        // pageLinksdisplayProp: 'FileLeafRef',
-        
+        bannerTitle: "FPS Core 1.14 Banner Default",
     }
 };
 
@@ -95,21 +51,6 @@ export const ForceFinancialManualColl : IPreConfigSettings = {
         // Pin Me props that are not preset in manifest.json
         defPinState: "pinFull",
         forcePinState: true,
-
-        // Web part styling props that are not preset in manifest.json
-        h1Style: "background:#e3e3e3;color:#005495;padding:10px 20px",
-        pageInfoStyle: '\"paddingBottom\":\"20px\",\"backgroundColor\":\"#dcdcdc\";\"borderLeft\":\"solid 3px #c4c4c4\"',
-
-        // Properties props that are not preset in manifest.json
-        // selectedProperties: [
-        //     "ALGroup",
-        //     "DocumentType",
-        //     "Functions",
-        //     "Processes",
-        //     "ReportingSections",
-        //     "StandardDocuments",
-        //     "Topics",
-        // ],
 
         // Visitor Panel props that are not preset in manifest.json
         fullPanelAudience: 'Page Editors',
@@ -146,39 +87,6 @@ export const ForceFinancialManualSubSite : IPreConfigSettings = {
     location: '/sites/financemanual/manual/'.toLowerCase(),
     props: {
 
-        selectedProperties: [
-            "ReportingForms",
-            "DocumentType",
-            "Functions",
-            "Processes",
-            "ReportingSections",
-            "StandardDocuments",
-            "Topics",
-        ],
-
-        relatedStyle: '',
-
-        related1heading: 'Standards',
-        related1showItems: true,
-        related1isExpanded: true,
-
-        related1listTitle: 'Site Pages',
-        related1restFilter: 'StandardDocumentsId eq {{PageId}}',
-        related1AreFiles: true,
-
-        related1linkProp: 'File/ServerRelativeUrl', // aka FileLeaf to open file name, if empty, will just show the value
-        related1displayProp: 'Title',
-
-        related2heading: 'Supporting Documents',
-        related2showItems: true,
-        related2isExpanded: false,
-
-        related2listTitle: 'SupportDocuments',
-        related2restFilter: 'StandardDocumentsId eq {{PageId}}',
-        related2AreFiles: true,
-        related2linkProp: 'File/ServerRelativeUrl', // aka FileLeaf to open file name, if empty, will just show the value
-        related2displayProp: 'FileLeafRef',
-        
     }
 };
 

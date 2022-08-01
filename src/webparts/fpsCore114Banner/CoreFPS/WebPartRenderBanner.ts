@@ -22,6 +22,7 @@ export function mainWebPartRenderBannerSetup(
     clientWidth: number,
     thisContext: WebPartContext,
     modifyBannerTitle: boolean, forceBanner: boolean,
+    enableExpandoramic: boolean
 
     ) {
 
@@ -128,7 +129,7 @@ export function mainWebPartRenderBannerSetup(
     let bannerProps: IWebpartBannerProps = bannerSetup.bannerProps;
     expandoErrorObj = bannerSetup.errorObjArray; 
 
-    bannerProps.enableExpandoramic = false; //Hard code this option for FPS PageInfo web part only because of PinMe option
+    bannerProps.enableExpandoramic = enableExpandoramic; //Hard code this option for FPS PageInfo web part only because of PinMe option
 
     //Add this to force a title because when pinned by default, users may not know it's there.
     if ( thisProps.forcePinState === true && thisProps.defPinState !== 'normal' ) {
