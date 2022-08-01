@@ -1,4 +1,5 @@
 declare interface IFpsCore114BannerWebPartStrings {
+  bannerTitle: string;
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -6,6 +7,11 @@ declare interface IFpsCore114BannerWebPartStrings {
   AppLocalEnvironmentTeams: string;
   AppSharePointEnvironment: string;
   AppTeamsTabEnvironment: string;
+
+  // 1 - Analytics options
+  analyticsWeb: string;
+  analyticsList: string;
+
 }
 
 declare module 'FpsCore114BannerWebPartStrings' {

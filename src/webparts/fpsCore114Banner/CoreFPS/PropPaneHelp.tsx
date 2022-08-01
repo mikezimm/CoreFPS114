@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { Icon, } from 'office-ui-fabric-react/lib/Icon';
 
 import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize,} from 'office-ui-fabric-react/lib/Pivot';
+
+// import { IQuickCommands } from '@mikezimm/npmfunctions/dist/QuickCommands/IQuickCommands';
+
+// import { IRefinerRulesStrs, IRefinerRulesInts, IRefinerRulesNums, IRefinerRulesTime, IRefinerRulesUser, IRefinerRulesEXPE, IRefinerRulesNone } from '@mikezimm/npmfunctions/dist/Refiners/IRefiners';
+// import { RefinerRulesStrs, RefinerRulesInts, RefinerRulesNums, RefinerRulesTime, RefinerRulesUser, RefinerRulesEXPE, RefinerRulesNone } from '@mikezimm/npmfunctions/dist/Refiners/IRefiners';
 
 import { gitRepoALVFinManSmall } from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
 
@@ -53,6 +58,7 @@ const ReactCSSPropsNote = <span style={{ color: 'darkred', fontWeight: 500 }}>Re
 
 export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
 
+  console.log( 'PropPaneHelp ~ sitePresets: ', sitePresets );
   let preSetsContent = SitePresetsInfo( sitePresets );
 
   const WebPartHelpElement = <div style={{ overflowX: 'scroll' }}>
@@ -69,6 +75,7 @@ export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
         >
 
         { PinMeHelp }
+      
         <PivotItem headerText={ 'Table of Contents' } > 
           <div className={ 'fps-pph-content' }>
 
@@ -106,7 +113,7 @@ export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
             <div>How the web part initially loads.</div>
           </div>
         </PivotItem>
-
+{/* 
         <PivotItem headerText={ 'Web part styles' } > 
           <div className={ 'fps-pph-content' }>
 
@@ -116,10 +123,18 @@ export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
             
             <div style={{ display: 'flex' }}>
                   <div style={ padRight40 }><div className={ 'fps-pph-topic' }>Border Classes</div><ul>
-                    { ['FPSBorderClasses1', 'FPSBorderClasses2'].map( rule => <li>{ '.' + rule }</li> ) }
+                    { FPSBorderClasses.map( rule => <li>{ '.' + rule }</li> ) }
                   </ul></div>
                   <div style={ padRight40 }><div className={ 'fps-pph-topic' }>Heading Numb Classes</div><ul>
-                    { ['FPSHeadingNumberClasses1','FPSHeadingNumberClasses2'].map( rule => <li>{ '.' + rule }</li> ) }
+                    { FPSHeadingNumberClasses.map( rule => <li>{ '.' + rule }</li> ) }
+                  </ul></div>
+
+                  <div style={ padRight40 }><div className={ 'fps-pph-topic' }>Emoji Classes</div><ul>
+                    { FPSEmojiClasses.map( rule => <li>{ '.' + rule }</li> ) }
+                  </ul></div>
+
+                  <div style={ padRight40 }><div className={ 'fps-pph-topic' }>Misc Classes</div><ul>
+                    { FPSMiscClasses.map( rule => <li>{ '.' + rule }</li> ) }
                   </ul></div>
               </div>
 
@@ -135,7 +150,7 @@ export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
             <div>Applies to the Properties container</div>
             <div>{ ReactCSSPropsNote } "fontWeight":600,"color":"yellow"</div>
           </div>
-        </PivotItem>
+        </PivotItem> */}
 
         <PivotItem headerText={ 'RelatedInfo' } > 
           <div className={ 'fps-pph-content' }>

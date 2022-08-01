@@ -1,24 +1,24 @@
-import * as React from 'react';
+// import * as React from 'react';
 
-import * as fpsAppIcons from '@mikezimm/npmfunctions/dist/Icons/standardExStorage';
+// import * as fpsAppIcons from '@mikezimm/npmfunctions/dist/Icons/standardExStorage';
 
-import { Icon  } from 'office-ui-fabric-react/lib/Icon';
+// import { Icon  } from 'office-ui-fabric-react/lib/Icon';
 
-import { buildAppWarnIcon, buildClickableIcon } from '@mikezimm/npmfunctions/dist/Icons/stdIconsBuildersV02';
+// import { buildAppWarnIcon, buildClickableIcon } from '@mikezimm/npmfunctions/dist/Icons/stdIconsBuildersV02';
 
-import * as StdIcons from '@mikezimm/npmfunctions/dist/Icons/iconNames';
+// import * as StdIcons from '@mikezimm/npmfunctions/dist/Icons/iconNames';
 
-import { IRepoLinks } from '@mikezimm/npmfunctions/dist/Links/CreateLinks';
+// import { IRepoLinks } from '@mikezimm/npmfunctions/dist/Links/CreateLinks';
 
-import { convertIssuesMarkdownStringToSpan } from '@mikezimm/npmfunctions/dist/Elements/Markdown';
+// import { convertIssuesMarkdownStringToSpan } from '@mikezimm/npmfunctions/dist/Elements/Markdown';
 
 
-const iconStyles: any = { root: {
-  fontSize: 'x-large',
-  fontWeight: 600,
-  paddingRight: '10px',
-  paddingLeft: '10px',
-}};
+// const iconStyles: any = { root: {
+//   fontSize: 'x-large',
+//   fontWeight: 600,
+//   paddingRight: '10px',
+//   paddingLeft: '10px',
+// }};
 
 // const gridIcon = <Icon iconName={"GridViewSmall"}  style={ iconStyles } />; 
 // const tilesIcon = <Icon iconName={"Tiles"}  style={ iconStyles } />; 

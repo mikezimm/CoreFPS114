@@ -1,9 +1,13 @@
 import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
-import { IFpsCore114BannerWebPartProps } from "../IFpsCore114BannerWebPartProps";
+// import { IFpsCore114BannerWebPartProps } from "../IFpsCore114BannerWebPartProps";
 
 import { IPreConfigSettings, IAllPreConfigSettings } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
+import { PresetFPSBanner } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfiguredConstants';
 import { encrptMeOriginalTest } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/logTest';
 import { ContALVFMContent, ContALVFMWebP } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/constants';
+
+import * as strings from 'FpsCore114BannerWebPartStrings';
+// import { createBannerStyleStr } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/defaults";
 
 const FinancialManualContacts: IPropertyFieldGroupOrPerson = {
     id: '1',
@@ -16,7 +20,9 @@ const FinancialManualContacts: IPropertyFieldGroupOrPerson = {
     imageUrl: null,
 };
 
-export const ForceEverywhere : IPreConfigSettings = {
+//Specific to this web part
+export const WPForceEverywhere : IPreConfigSettings = {
+    source: 'WPForceEverywhere',
     location: '*',
     props: {
         // relatedStyle: '',
@@ -26,6 +32,13 @@ export const ForceEverywhere : IPreConfigSettings = {
         // pageLinksisExpanded: false,
         // canvasLinks: true,
         // canvasImgs: true,
+
+        showRepoLinks : true,
+        showExport : false,
+        
+        enableExpandoramic : false,
+        showBanner : true,
+
         pageLinksweb: 'current',
         pageLinkslistTitle: 'Site Pages',
         pageLinksrestFilter: 'ID eq {{PageId}}',
@@ -35,9 +48,14 @@ export const ForceEverywhere : IPreConfigSettings = {
     }
 };
 
-export const PresetEverywhere : IPreConfigSettings = {
+//Specific to this web part
+export const WPPresetEverywhere : IPreConfigSettings = {
+    source: 'WPPresetEverywhere',
     location: '*',
     props: {
+
+        propsExpanded: true,
+        propsTitleField: strings.bannerTitle,
 
         related1web: 'current',
         related2web: 'current',
@@ -71,7 +89,8 @@ export const PresetEverywhere : IPreConfigSettings = {
 };
 
 export const ForceFinancialManualColl : IPreConfigSettings = {
-    location: '/sites/financemanual/',
+    source: 'ForceFinancialManualColl',
+    location: '/sites/financemanual/'.toLowerCase(),
     props: {
         // Pin Me props that are not preset in manifest.json
         defPinState: "pinFull",
@@ -123,7 +142,8 @@ export const ForceFinancialManualColl : IPreConfigSettings = {
 };
 
 export const ForceFinancialManualSubSite : IPreConfigSettings = {
-    location: '/sites/financemanual/manual/',
+    source: 'ForceFinancialManualSubSite',
+    location: '/sites/financemanual/manual/'.toLowerCase(),
     props: {
 
         selectedProperties: [
@@ -163,20 +183,45 @@ export const ForceFinancialManualSubSite : IPreConfigSettings = {
 };
 
 export const PresetFinancialManual : IPreConfigSettings = {
-    location: '/sites/financemanual/',
+    source: 'PresetFinancialManual',
+    location: '/sites/financemanual/'.toLowerCase(),
     props: {
         homeParentGearAudience: 'Everyone',
     }
 };
 
 export const PresetSomeRandomSite : IPreConfigSettings = {
-    location: '/sites/SomeRandomSite/',
+    source: 'PresetSomeRandomSite',
+    location: '/sites/FpsCore114BannerSite/'.toLowerCase(),
     props: {
-        homeParentGearAudience: 'Some Test Value',
+        // homeParentGearAudience: 'Some Test Value',
+        // requireDocumentation: false,
+        // requireDocumentation: 'redDark',
     }
 };
 
+export const ForceSomeRandomSite : IPreConfigSettings = {
+    source: 'ForceSomeRandomSite',
+    location: '/sites/FpsCore114BannerSite/'.toLowerCase(),
+    props: {
+        // homeParentGearAudience: 'Some Test Value',
+        // requireDocumentation: false,
+        // requireContacts: true,
+        // bannerStyleChoice: 'redDark',
+        // bannerStyle: createBannerStyleStr( 'redDark', 'banner'),
+        // bannerCmdStyle: createBannerStyleStr( 'redDark', 'cmd'),
+    }
+};
+
+
 export const PreConfiguredProps : IAllPreConfigSettings = {
-    forced: [ ForceFinancialManualColl, ForceFinancialManualSubSite, ForceEverywhere ],
-    preset: [ PresetFinancialManual, PresetSomeRandomSite, PresetEverywhere ],
+    //Forced over-ride presets.
+    //Forced and presets are applied in order of this array....
+    //  This means the final preset in the array takes precedance.
+
+    //For Forced, generally speaking put because this web part may have specific needs.
+    forced: [ WPForceEverywhere, ForceFinancialManualColl, ForceFinancialManualSubSite, ForceSomeRandomSite,  ],
+
+    //For Presets, Order should be:  PresetFPSBanner, WPPresetEverywhere, CUSTOM Sites,
+    preset: [ PresetFPSBanner, WPPresetEverywhere, PresetFinancialManual, PresetSomeRandomSite, ],
 };

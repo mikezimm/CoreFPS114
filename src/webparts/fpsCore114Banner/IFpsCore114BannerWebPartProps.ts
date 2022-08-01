@@ -1,16 +1,19 @@
 
-import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
+// import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 
-import { ISupportedHost } from "@mikezimm/npmfunctions/dist/Services/PropPane/FPSInterfaces";
+// import { ISupportedHost } from "@mikezimm/npmfunctions/dist/Services/PropPane/FPSInterfaces";
 
-import { IExpandAudiences } from "@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsExpando";
+// import { IExpandAudiences } from "@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsExpando";
 
-import { IWebpartHistory, IWebpartHistoryItem2, } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistoryInterface';
-import { IPinMeState } from "@mikezimm/npmfunctions/dist/PinMe/FPSPinMenu";
+// import { IWebpartHistory, IWebpartHistoryItem2, } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistoryInterface';
+// import { IPinMeState } from "@mikezimm/npmfunctions/dist/PinMe/FPSPinMenu";
 
-import { exportIgnorePropsFPS, importBlockPropsFPS } from '@mikezimm/npmfunctions/dist/WebPartInterfaces/ImportProps';
+import { IMinHeadingStyleProps } from "@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadingFunctions";
 
+import { exportIgnorePropsFPS, importBlockPropsFPS } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
 import { IMinWPBannerProps } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup";
+import { IMinBannerUIProps, IMinPinMeProps, IMinPandoramicProps, IMinBannerThemeProps, IMinCustomHelpProps, IMinPageStyleProps, IMinBannerUtilityProps, IMinFPSLegacyProps } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup";
+import { IMinRelatedWPProps, IMinPageLinksProps } from "@mikezimm/npmfunctions/dist/RelatedItems/IRelatedWebPartProps";
 
 //Specific for this web part
 export const exportIgnorePropsThis = [ ];
@@ -35,65 +38,9 @@ export const changePropertyGroupX = [ 'showSomeProps', 'showCustomProps' , 'show
 
 export const changeWebPartStyles = [ 'h1Style', 'h2Style' ,'h3Style' , 'pageInfoStyle', 'tocStyle', 'propsStyle' ];
 
+// export interface IFpsCore114BannerWebPartProps extends IMinWPBannerProps {
+export interface IFpsCore114BannerWebPartProps extends IMinBannerUIProps, IMinPinMeProps, IMinPandoramicProps, IMinBannerThemeProps, IMinCustomHelpProps, IMinPageStyleProps, IMinBannerUtilityProps, IMinFPSLegacyProps {
 
-export interface IFpsCore114BannerWebPartProps extends IMinWPBannerProps {
+  description: string;
   
-    showTOC: boolean;
-    // minHeadingToShow: IMinHeading;
-    description: string;
-    TOCTitleField: string;
-    tocExpanded: boolean;
-  
-    h1Style: string;
-    h2Style: string;
-    h3Style: string;
-    pageInfoStyle: string;
-    tocStyle: string;
-    propsStyle: string;
-  
-    showSomeProps: boolean;
-    showCustomProps: boolean;
-    showOOTBProps: boolean;
-    showApprovalProps: boolean;
-    propsExpanded: boolean;
-  
-    //Copied from AdvancedPagePropertiesWebPart.ts
-    propsTitleField: string;
-    selectedProperties: string[];
-  
-    relatedStyle: string;
-  
-    related1heading: string;
-    related1showItems: boolean;
-    related1isExpanded: boolean;
-    related1web: string;
-    related1listTitle: string;
-    related1AreFiles: boolean;   // Used to include ServerRedirectedEmbedUrl in fetch for alt-click
-    related1restFilter: string;
-    related1linkProp: string; // aka FileLeaf to open file name, if empty, will just show the value
-    related1displayProp: string;
-  
-    related2heading: string;
-    related2showItems: boolean;
-    related2isExpanded: boolean;
-    related2web: string;
-    related2listTitle: string;
-    related2AreFiles: boolean;   // Used to include ServerRedirectedEmbedUrl in fetch for alt-click
-    related2restFilter: string;
-    related2linkProp: string; // aka FileLeaf to open file name, if empty, will just show the value
-    related2displayProp: string;
-  
-    pageLinksheading: string;
-    pageLinksshowItems: boolean;
-    pageLinksisExpanded: boolean;
-    pageLinksweb: string;
-    pageLinkslistTitle: string;
-    pageLinksrestFilter: string;
-    pageLinkslinkProp: string; // aka FileLeaf to open file name, if empty, will just show the value
-    pageLinksdisplayProp: string;
-    canvasLinks: boolean;
-    canvasImgs: boolean;
-    ignoreDefaultImages: boolean;
-    linkSearchBox: boolean;
- 
-  }
+}

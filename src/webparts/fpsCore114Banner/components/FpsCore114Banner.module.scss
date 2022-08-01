@@ -2,7 +2,7 @@
 
 .fpsCore114Banner {
   overflow: hidden;
-  padding: 1em;
+  // padding: 1em; //Remove padding and put on the child div
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
   &.teams {

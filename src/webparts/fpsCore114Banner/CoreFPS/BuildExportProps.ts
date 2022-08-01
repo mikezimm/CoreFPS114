@@ -10,8 +10,10 @@
  *                                                                                                                                  
  */
 
+ import "@pnp/sp/webs";
+ import "@pnp/sp/site-groups/web";
 
-/***
+ /***
   *    d888888b .88b  d88. d8888b.  .d88b.  d8888b. d888888b      d8b   db d8888b. .88b  d88.      d88888b db    db d8b   db  .o88b. d888888b d888888b  .d88b.  d8b   db .d8888. 
   *      `88'   88'YbdP`88 88  `8D .8P  Y8. 88  `8D `~~88~~'      888o  88 88  `8D 88'YbdP`88      88'     88    88 888o  88 d8P  Y8 `~~88~~'   `88'   .8P  Y8. 888o  88 88'  YP 
   *       88    88  88  88 88oodD' 88    88 88oobY'    88         88V8o 88 88oodD' 88  88  88      88ooo   88    88 88V8o 88 8P         88       88    88    88 88V8o 88 `8bo.   
@@ -39,15 +41,24 @@
   *                                                                                                                                               
   */
 
-//Common or Shared FPS Banner props
+//  import * as strings from 'FpsCore114BannerWebPartStrings';
 
-import { exportIgnoreProps, } from '../IFpsCore114BannerWebPartProps';
+import { IFpsCore114BannerWebPartProps } from '../IFpsCore114BannerWebPartProps';
+import { exportIgnoreProps, importBlockProps, } from '../IFpsCore114BannerWebPartProps';
 
-import { changePinMe, changeWebPartStyles, } from '../IFpsCore114BannerWebPartProps'; //These were added in FPSPageInfo.  May not apply to all web parts.
+import { changeCustomHelp, changeExpando, changeBanner, changePageStyle, changefpsOptions2, exportIgnorePropsFPS, importBlockPropsFPS, } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
 
-import { changeVisitor, changeExpando, changeBanner, changefpsOptions1, changefpsOptions2,  } from '@mikezimm/npmfunctions/dist/WebPartInterfaces/ImportProps';
+import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerUtility,  } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
+import { changePinMe,  } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
 
-import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerOther,  } from '@mikezimm/npmfunctions/dist/WebPartInterfaces/ImportProps';
+import { changeRelated1, changeRelated2, changePageLinks,  } from '@mikezimm/npmfunctions/dist/RelatedItems/IRelatedWebPartProps';
+import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadingFunctions';
+
+
+// import { ILoadPerformanceALVFM, IPerformanceOp } from './components/Performance/IFpsCore114BannerWebPartProps';
+
+
+
 
 /***
  *    .d8888.  .d8b.  .88b  d88. d8888b. db      d88888b       .d88b.  d8b   db db      db    db                                                                            
@@ -68,8 +79,6 @@ import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerOth
  *                                                                                                                                                                          
  */
 
- import { IFpsCore114BannerWebPartProps } from '../IFpsCore114BannerWebPartProps';
- import { } from '@mikezimm/npmfunctions/dist/WebPartInterfaces/ImportProps';
 
 /***
  *    d88888b db    db d8888b.  .d88b.  d8888b. d888888b      d8888b. d8888b.  .d88b.  d8888b. .d8888. 
@@ -82,38 +91,40 @@ import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerOth
  *                                                                                                     
  */
 
-
 /**
  * buildExportProps builds up an object of specific webpart properties that can be exported via the help panel
- * @param wpProps 
- * @param wpInstanceID 
- * @param currentWeb 
- * @returns 
+ * @returns exportObject
  */
+
+import { changeWebPartStyles, } from '../IFpsCore114BannerWebPartProps';
 
  export function buildExportProps( wpProps : IFpsCore114BannerWebPartProps, wpInstanceID: string, currentWeb: string, ) {
     let exportStructure :any = {};
+    // let wpInstanceIDSplit = wpInstanceID.split('|');
+    // exportStructure.wpInstanceID = [ wpInstanceIDSplit[0], wpInstanceIDSplit[1], wpInstanceIDSplit[3]].join(' ~ ');
 
-    //These are common at top of every web part
     exportStructure.wpInstanceID = wpInstanceID;
     exportStructure.currentWeb = currentWeb;
 
-    //Add Keys to export like this.
-    // exportStructure.changeTOC = changeTOC;
-
-
-
-    //These are common across all FPS Banner web parts
     exportStructure.changePinMe = changePinMe;
 
+    exportStructure.changeRelated1 = changeRelated1;
+    exportStructure.changeRelated2 = changeRelated2;
+    exportStructure.pageLinks = changePageLinks;
+
+    exportStructure.changeHeadingStyleProps = changeHeadingStyleProps;
     exportStructure.changeWebPartStyles = changeWebPartStyles;
 
-    exportStructure.Visitor = changeVisitor;
+    exportStructure.Visitor = changeCustomHelp;
 
-    exportStructure.Banner = changeBanner;
+    exportStructure.BannerBasics = changeBannerBasics;
+    exportStructure.BannerNav = changeBannerNav;
 
-    exportStructure.fpsOptions1 = changefpsOptions1;
+    exportStructure.BannerTheme = changeBannerTheme;
+    exportStructure.BannerOther = changeBannerUtility;
 
+    exportStructure.fpsOptions1 = changePageStyle;
+    
     exportStructure.Expando = changeExpando;
 
     exportStructure.fpsOptions2 = changefpsOptions2;
@@ -125,30 +136,23 @@ import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerOth
 
   }
 
-  /**
-   * This function creates FPSPropsObj which is designed to be passed in to Analytics save object.
-   * @param wpProps 
-   * @param wpInstanceID 
-   * @param currentWeb 
-   * @returns 
-   */
   export function buildFPSAnalyticsProps( wpProps : IFpsCore114BannerWebPartProps, wpInstanceID: string, currentWeb: string, ) {
     let exportStructure :any = {};
 
     exportStructure.wpInstanceID = wpInstanceID;
     exportStructure.currentWeb = currentWeb;
 
-    exportStructure.Visitor = changeVisitor;
+    exportStructure.Visitor = changeCustomHelp;
 
     exportStructure.BannerBasics = changeBannerBasics;
     exportStructure.BannerNav = changeBannerNav;
 
     exportStructure.BannerTheme = changeBannerTheme;
-    exportStructure.BannerOther = changeBannerOther;
+    exportStructure.BannerOther = changeBannerUtility;
 
     // exportStructure.Expando = changeExpando;
 
-    exportStructure.fpsOptions1 = changefpsOptions1;
+    exportStructure.fpsOptions1 = changePageStyle;
     exportStructure.fpsOptions2 = changefpsOptions2;
 
     let exportObject = createExportObject( exportStructure, wpProps, exportIgnoreProps, false );
