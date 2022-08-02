@@ -1,6 +1,14 @@
-/**
- * These are the defaults created with yo....
+/***
+ *    db    db  .d88b.       d888888b .88b  d88. d8888b.  .d88b.  d8888b. d888888b .d8888. 
+ *    `8b  d8' .8P  Y8.        `88'   88'YbdP`88 88  `8D .8P  Y8. 88  `8D `~~88~~' 88'  YP 
+ *     `8bd8'  88    88         88    88  88  88 88oodD' 88    88 88oobY'    88    `8bo.   
+ *       88    88    88         88    88  88  88 88~~~   88    88 88`8b      88      `Y8b. 
+ *       88    `8b  d8'        .88.   88  88  88 88      `8b  d8' 88 `88.    88    db   8D 
+ *       YP     `Y88P'       Y888888P YP  YP  YP 88       `Y88P'  88   YD    YP    `8888Y' 
+ *                                                                                         
+ *                                                                                         
  */
+
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -11,112 +19,174 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'FpsCore114BannerWebPartStrings';
-import FpsCore114Banner from './components/FpsCore114Banner';
-import { IFpsCore114BannerProps } from './components/IFpsCore114BannerProps';
 
-/**
- * These are the imports for FPSBanner
+/***
+ *    d888888b db   db d888888b .d8888.      db   d8b   db d88888b d8888b.      d8888b.  .d8b.  d8888b. d888888b 
+ *    `~~88~~' 88   88   `88'   88'  YP      88   I8I   88 88'     88  `8D      88  `8D d8' `8b 88  `8D `~~88~~' 
+ *       88    88ooo88    88    `8bo.        88   I8I   88 88ooooo 88oooY'      88oodD' 88ooo88 88oobY'    88    
+ *       88    88~~~88    88      `Y8b.      Y8   I8I   88 88~~~~~ 88~~~b.      88~~~   88~~~88 88`8b      88    
+ *       88    88   88   .88.   db   8D      `8b d8'8b d8' 88.     88   8D      88      88   88 88 `88.    88    
+ *       YP    YP   YP Y888888P `8888Y'       `8b8' `8d8'  Y88888P Y8888P'      88      YP   YP 88   YD    YP    
+ *                                                                                                               
+ *                                                                                                               
  */
 
+// STANDARD PROJECT IMPORTS
+import * as strings from 'FpsCore114BannerWebPartStrings';
+import { IFpsCore114BannerProps } from './components/IFpsCore114BannerProps';
+import { IFpsCore114BannerWebPartProps } from './IFpsCore114BannerWebPartProps';
+import FpsCore114Banner from './components/FpsCore114Banner';
 
 
-// import { PropertyFieldPeoplePicker, PrincipalType } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
+/***
+ *    d88888b d8888b. .d8888.      d8888b. d8888b. d88888b .d8888. d88888b d888888b .d8888. 
+ *    88'     88  `8D 88'  YP      88  `8D 88  `8D 88'     88'  YP 88'     `~~88~~' 88'  YP 
+ *    88ooo   88oodD' `8bo.        88oodD' 88oobY' 88ooooo `8bo.   88ooooo    88    `8bo.   
+ *    88~~~   88~~~     `Y8b.      88~~~   88`8b   88~~~~~   `Y8b. 88~~~~~    88      `Y8b. 
+ *    88      88      db   8D      88      88 `88. 88.     db   8D 88.        88    db   8D 
+ *    YP      88      `8888Y'      88      88   YD Y88888P `8888Y' Y88888P    YP    `8888Y' 
+ *
+ *    USED IN PRESETTING PROPS
+ */
 
-// import { setPageFormatting, } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSFormatFunctions';
+import { applyPresetCollectionDefaults } from '@mikezimm/npmfunctions/dist/PropPaneHelp/ApplyPresets';
+import { ISitePreConfigProps, } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
+import { PreConfiguredProps } from './CoreFPS/PreConfiguredSettings';
 
-// import { IFPSPage, } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSInterfaces';
-// import { createFPSWindowProps, initializeFPSSection, initializeFPSPage, webpartInstance, } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSDocument';
+
+/***
+ *     .d88b.  d8b   db      d888888b d8b   db d888888b d888888b 
+ *    .8P  Y8. 888o  88        `88'   888o  88   `88'   `~~88~~' 
+ *    88    88 88V8o 88         88    88V8o 88    88       88    
+ *    88    88 88 V8o88         88    88 V8o88    88       88    
+ *    `8b  d8' 88  V888        .88.   88  V888   .88.      88    
+ *     `Y88P'  VP   V8P      Y888888P VP   V8P Y888888P    YP    
+ *
+ *     USED FIRST IN ONINIT
+ */
+
 import { webpartInstance, } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSDocument';
-// import { IFPSWindowProps, IFPSSection, IFPSSectionStyle } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSInterfaces';
-// import { setSectionStyles } from '@mikezimm/npmfunctions/dist/Services/DOM/setAllSectionStyles';
-// import { minimizeHeader } from '@mikezimm/npmfunctions/dist/Services/DOM/minimzeHeader';
-// import { minimizeToolbar } from '@mikezimm/npmfunctions/dist/Services/DOM/minimzeToolbar';
-// import { minimizeQuickLaunch } from '@mikezimm/npmfunctions/dist/Services/DOM/quickLaunch';
-import { applyHeadingCSS } from '@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadingFunctions';
+
+import { IFPSUser } from '@mikezimm/npmfunctions/dist/Services/Users/IUserInterfaces';
+import { getFPSUser } from '@mikezimm/npmfunctions/dist/Services/Users/FPSUser';
+
+import * as links from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
+import { IRepoLinks } from '@mikezimm/npmfunctions/dist/Links/CreateLinks';
+
+export const repoLink: IRepoLinks = links.gitRepoCoreFPS114Small;
+
+
+/***
+ *    .d8888. d888888b db    db db      d88888b .d8888. 
+ *    88'  YP `~~88~~' `8b  d8' 88      88'     88'  YP 
+ *    `8bo.      88     `8bd8'  88      88ooooo `8bo.   
+ *      `Y8b.    88       88    88      88~~~~~   `Y8b. 
+ *    db   8D    88       88    88booo. 88.     db   8D 
+ *    `8888Y'    YP       YP    Y88888P Y88888P `8888Y' 
+ *
+ *    USED FOR STYLES
+ */
+
+import { expandoOnInit } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/WebPartOnInit';
 import { renderCustomStyles } from '@mikezimm/npmfunctions/dist/WebPartFunctions/MainWebPartStyleFunctions';
 import { updateBannerThemeStyles } from '@mikezimm/npmfunctions/dist/WebPartFunctions/BannerThemeFunctions';
-import { expandoOnInit } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/WebPartOnInit';
 
-import { replaceHandleBars } from '@mikezimm/npmfunctions/dist/Services/Strings/handleBars';
 
-// import { FPSOptionsGroupBasic, FPSBanner2Group, FPSOptionsGroupAdvanced } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup2';
-// import { FPSOptionsGroupBasic, FPSBanner3Group, FPSOptionsGroupAdvanced } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
+/***
+ *    db   d8b   db d8888b.      db   db d888888b .d8888. d888888b  .d88b.  d8888b. db    db 
+ *    88   I8I   88 88  `8D      88   88   `88'   88'  YP `~~88~~' .8P  Y8. 88  `8D `8b  d8' 
+ *    88   I8I   88 88oodD'      88ooo88    88    `8bo.      88    88    88 88oobY'  `8bd8'  
+ *    Y8   I8I   88 88~~~        88~~~88    88      `Y8b.    88    88    88 88`8b      88    
+ *    `8b d8'8b d8' 88           88   88   .88.   db   8D    88    `8b  d8' 88 `88.    88    
+ *     `8b8' `8d8'  88           YP   YP Y888888P `8888Y'    YP     `Y88P'  88   YD    YP    
+ *
+ *     USED FOR WEB PART HISTORY
+ */
+
+import { updateWebpartHistoryV2,  } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/Functions';
+import { getWebPartHistoryOnInit } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/OnInit';
+
+
+/***
+ *    d8888b.  .d8b.  d8b   db d8b   db d88888b d8888b. 
+ *    88  `8D d8' `8b 888o  88 888o  88 88'     88  `8D 
+ *    88oooY' 88ooo88 88V8o 88 88V8o 88 88ooooo 88oobY' 
+ *    88~~~b. 88~~~88 88 V8o88 88 V8o88 88~~~~~ 88`8b   
+ *    88   8D 88   88 88  V888 88  V888 88.     88 `88. 
+ *    Y8888P' YP   YP VP   V8P VP   V8P Y88888P 88   YD 
+ *
+ *     USED FOR CREATING BANNER
+ */
+
+import { IWebpartBannerProps } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/bannerProps';
+import { mainWebPartRenderBannerSetup } from './CoreFPS/WebPartRenderBanner';
+import { buildExportProps, buildFPSAnalyticsProps } from './CoreFPS/BuildExportProps';
+
+/***
+ *    d8888b. d8888b.  .d88b.  d8888b.       d888b  d8888b.  .d88b.  db    db d8888b. .d8888. 
+ *    88  `8D 88  `8D .8P  Y8. 88  `8D      88' Y8b 88  `8D .8P  Y8. 88    88 88  `8D 88'  YP 
+ *    88oodD' 88oobY' 88    88 88oodD'      88      88oobY' 88    88 88    88 88oodD' `8bo.   
+ *    88~~~   88`8b   88    88 88~~~        88  ooo 88`8b   88    88 88    88 88~~~     `Y8b. 
+ *    88      88 `88. `8b  d8' 88           88. ~8~ 88 `88. `8b  d8' 88b  d88 88      db   8D 
+ *    88      88   YD  `Y88P'  88            Y888P  88   YD  `Y88P'  ~Y8888P' 88      `8888Y' 
+ *
+ *    USED FOR PROPERTY PANE GROUPS
+ */
+
+import { WebPartInfoGroup, } from '@mikezimm/npmfunctions/dist/Services/PropPane/zReusablePropPane';
 import { FPSOptionsGroupBasic, } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
 import { FPSBanner3BasicGroup,FPSBanner3NavGroup, FPSBanner3ThemeGroup } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
 import { FPSBanner3VisHelpGroup } from '@mikezimm/npmfunctions/dist/CoreFPS/FPSOptionsGroupVisHelp';
 import { FPSPinMePropsGroup } from '@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSOptionsGroupPinMe';
-import { buildRelatedItemsPropsGroup } from '@mikezimm/npmfunctions/dist/RelatedItems/RelatedItemsPropGroup';
+import { FPSOptionsExpando, } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/FPSOptionsExpando'; //expandAudienceChoicesAll
 
-import { FPSOptionsExpando, expandAudienceChoicesAll } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/FPSOptionsExpando'; //expandAudienceChoicesAll
 
-import { WebPartInfoGroup, } from '@mikezimm/npmfunctions/dist/Services/PropPane/zReusablePropPane';
+/***
+ *    d8888b. d8888b.  .d88b.  d8888b.      d888888b .88b  d88. d8888b.  .d88b.  d8888b. d888888b d888888b d8b   db  d888b  
+ *    88  `8D 88  `8D .8P  Y8. 88  `8D        `88'   88'YbdP`88 88  `8D .8P  Y8. 88  `8D `~~88~~'   `88'   888o  88 88' Y8b 
+ *    88oodD' 88oobY' 88    88 88oodD'         88    88  88  88 88oodD' 88    88 88oobY'    88       88    88V8o 88 88      
+ *    88~~~   88`8b   88    88 88~~~           88    88  88  88 88~~~   88    88 88`8b      88       88    88 V8o88 88  ooo 
+ *    88      88 `88. `8b  d8' 88             .88.   88  88  88 88      `8b  d8' 88 `88.    88      .88.   88  V888 88. ~8~ 
+ *    88      88   YD  `Y88P'  88           Y888888P YP  YP  YP 88       `Y88P'  88   YD    YP    Y888888P VP   V8P  Y888P  
+ *
+ *    USED for IMPORTING and EXPORTING
+ */
 
-import * as links from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
+import { importBlockProps, } from './IFpsCore114BannerWebPartProps';
+import { updateFpsImportProps, FPSImportPropsGroup } from '@mikezimm/npmfunctions/dist/Services/PropPane/ImportFunctions';
+import { refreshBannerStylesOnPropChange,  } from '@mikezimm/npmfunctions/dist/WebPartFunctions/BannerThemeFunctions';
+import { validateDocumentationUrl,  } from '@mikezimm/npmfunctions/dist/Links/ValidateLinks';
 
-import { importProps, FPSImportPropsGroup } from '@mikezimm/npmfunctions/dist/Services/PropPane/ImportFunctions';
 
-// import { sortStringArray, sortObjectArrayByStringKey, sortNumberArray, sortObjectArrayByNumberKey, sortKeysByOtherKey 
-// } from '@mikezimm/npmfunctions/dist/Services/Arrays/sorting';
+/***
+ *     .d8b.  d8b   db  .d8b.  db      db    db d888888b d888888b  .o88b. .d8888. 
+ *    d8' `8b 888o  88 d8' `8b 88      `8b  d8' `~~88~~'   `88'   d8P  Y8 88'  YP 
+ *    88ooo88 88V8o 88 88ooo88 88       `8bd8'     88       88    8P      `8bo.   
+ *    88~~~88 88 V8o88 88~~~88 88         88       88       88    8b        `Y8b. 
+ *    88   88 88  V888 88   88 88booo.    88       88      .88.   Y8b  d8 db   8D 
+ *    YP   YP VP   V8P YP   YP Y88888P    YP       YP    Y888888P  `Y88P' `8888Y' 
+ *
+ *    USED FOR ANALYTICS AND LOGGING
+ */
 
-// import { IBuildBannerSettings , buildBannerProps, IMinWPBannerProps } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
+import { saveViewAnalytics } from './CoreFPS/Analytics';
 
-import { buildExportProps, buildFPSAnalyticsProps } from './CoreFPS/BuildExportProps';
 
-// import { setExpandoRamicMode } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSExpandoramic';
-import { getUrlVars } from '@mikezimm/npmfunctions/dist/Services/Logging/LogFunctions';
-
-//encodeDecodeString(this.props.libraryPicker, 'decode')
-// import { encodeDecodeString, } from "@mikezimm/npmfunctions/dist/Services/Strings/urlServices";
-
-// import { verifyAudienceVsUser } from '@mikezimm/npmfunctions/dist/Services/Users/CheckPermissions';
-
-// import { bannerThemes, bannerThemeKeys, makeCSSPropPaneString, createBannerStyleStr, createBannerStyleObj } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/defaults';
-
-import { IRepoLinks } from '@mikezimm/npmfunctions/dist/Links/CreateLinks';
-
-import { IWebpartHistoryItem2 } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/Interface';
-import { updateWebpartHistoryV2,  } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/Functions';
-import { getWebPartHistoryOnInit } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/OnInit';
-
-// import { saveAnalytics3 } from '@mikezimm/npmfunctions/dist/Services/Analytics/analytics2';
-// import { IZLoadAnalytics, IZSentAnalytics, } from '@mikezimm/npmfunctions/dist/Services/Analytics/interfaces';
-
-// import { getSiteInfo, getWebInfoIncludingUnique } from '@mikezimm/npmfunctions/dist/Services/Sites/getSiteInfo';
-import { IFPSUser } from '@mikezimm/npmfunctions/dist/Services/Users/IUserInterfaces';
-import { getFPSUser } from '@mikezimm/npmfunctions/dist/Services/Users/FPSUser';
-
-// import { startPerformInit, startPerformOp, updatePerformanceEnd } from './components/Performance/functions';
-// import { IPerformanceOp, ILoadPerformanceALVFM, IHistoryPerformance } from './components/Performance/IPerformance';
-import { IWebpartBannerProps } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/bannerProps';
-
-import { mainWebPartRenderBannerSetup } from './CoreFPS/WebPartRenderBanner';
-// import { ISupportedHost } from "@mikezimm/npmfunctions/dist/Services/PropPane/FPSInterfaces";
-
-export const repoLink: IRepoLinks = links.gitRepoCoreFPS114Small;
+/***
+ *     .o88b. .d8888. .d8888.      d8888b. d88888b  .d88b.  db    db d888888b d8888b. d88888b .d8888. 
+ *    d8P  Y8 88'  YP 88'  YP      88  `8D 88'     .8P  Y8. 88    88   `88'   88  `8D 88'     88'  YP 
+ *    8P      `8bo.   `8bo.        88oobY' 88ooooo 88    88 88    88    88    88oobY' 88ooooo `8bo.   
+ *    8b        `Y8b.   `Y8b.      88`8b   88~~~~~ 88    88 88    88    88    88`8b   88~~~~~   `Y8b. 
+ *    Y8b  d8 db   8D db   8D      88 `88. 88.     `8P  d8' 88b  d88   .88.   88 `88. 88.     db   8D 
+ *     `Y88P' `8888Y' `8888Y'      88   YD Y88888P  `Y88'Y8 ~Y8888P' Y888888P 88   YD Y88888P `8888Y' 
+ *
+ *     USED BY BANNER COMPONENTS
+ */
 
 require('@mikezimm/npmfunctions/dist/Services/PropPane/GrayPropPaneAccordions.css');
 require('@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMe.css');
 require('@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadings.css');
 require('@mikezimm/npmfunctions/dist/PropPaneHelp/PropPanelHelp.css');
-
-import { IFpsCore114BannerWebPartProps } from './IFpsCore114BannerWebPartProps';
-// import { exportIgnoreProps, importBlockProps, } from './IFpsCore114BannerWebPartProps';
-import { importBlockProps, } from './IFpsCore114BannerWebPartProps';
-import { createStyleFromString } from '@mikezimm/npmfunctions/dist/Services/PropPane/StringToReactCSS';
-
-import { css } from 'office-ui-fabric-react';
-import { PreConfiguredProps } from './CoreFPS/PreConfiguredSettings';
-import { refreshBannerStylesOnPropChange,  } from '@mikezimm/npmfunctions/dist/WebPartFunctions/BannerThemeFunctions';
-import { updateFpsImportProps,  } from '@mikezimm/npmfunctions/dist/Services/PropPane/ImportFunctions';
-import { validateDocumentationUrl,  } from '@mikezimm/npmfunctions/dist/Links/ValidateLinks';
-
-// import { getThisSitesPreConfigProps, IConfigurationProp, ISitePreConfigProps, IPreConfigSettings, IAllPreConfigSettings } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
-import { ISitePreConfigProps, } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
-import { applyPresetCollectionDefaults } from '@mikezimm/npmfunctions/dist/PropPaneHelp/ApplyPresets';
-// import { IRelatedItemsProps, IRelatedKey } from '@mikezimm/npmfunctions/dist/RelatedItems/IRelatedItemsProps';
-
-// import { saveViewAnalytics } from './CoreFPS/Analytics';
 
 
 
@@ -128,22 +198,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   //Common FPS variables
 
   private sitePresets : ISitePreConfigProps = null;
-
-  private _unqiueId;
-  private _validDocsContacts: string = '';
-
   private trickyApp = 'FPS Core114';
   private wpInstanceID: any = webpartInstance( this.trickyApp );
-
   private FPSUser: IFPSUser = null;
-
-  private urlParameters: any = {};
-
-  //For FPS options
-  // private fpsPageDone: boolean = false;
-  // private fpsPageArray: any[] = null;
-  // private minQuickLaunch: boolean = false;
-  // private minHideToolbar: boolean = false;
 
   //For FPS Banner
   private forceBanner = true ;
@@ -151,24 +208,16 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   private modifyBannerStyle = true ;
   private enableExpandoramic = true ;
 
-  private  expandoDefault = false;
-  // private filesList: any = [];
-
   private exitPropPaneChanged = false;
-
-  // private expandoErrorObj = {
-
-  // };
-
-  //ADDED FOR WEBPART HISTORY:  
-  // private thisHistoryInstance: IWebpartHistoryItem2 = null;
-
   private importErrorMessage = '';
     
   // private performance : ILoadPerformanceALVFM = null;
   // private bannerProps: IWebpartBannerProps = null;
 
-  private beAReader: boolean = false; //2022-04-07:  Intent of this is a one-time per instance to 'become a reader' level user.  aka, hide banner buttons that reader won't see
+
+  //2022-04-07:  Intent of this is a one-time per instance to 'become a reader' level user.  aka, hide banner buttons that reader won't see
+  private beAReader: boolean = false; 
+
 
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
@@ -187,13 +236,10 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
      */
 
       //NEED TO APPLY THIS HERE as well as follow-up in render for it to not visibly change
-      // this.presetCollectionDefaults();
       this.sitePresets = applyPresetCollectionDefaults( this.sitePresets, PreConfiguredProps, this.properties, this.context.pageContext.web.serverRelativeUrl ) ;
 
       //This indicates if its SPA, Teams etc.... always keep.
       this.properties.pageLayout =  this.context['_pageLayoutType']?this.context['_pageLayoutType'] : this.context['_pageLayoutType'];
-
-      
 
       this.FPSUser = getFPSUser( this.context as any, links.trickyEmails, this.trickyApp ) ;
       console.log( 'FPSUser: ', this.FPSUser );
@@ -251,7 +297,6 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
         //Environement props
         // pageContext: this.context.pageContext, //This can be found in the bannerProps now
         context: this.context,
-        urlVars: getUrlVars(),
         displayMode: this.displayMode,
 
         // saveLoadAnalytics: this.saveLoadAnalytics.bind(this),

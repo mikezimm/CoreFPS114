@@ -32,7 +32,6 @@ export interface IFpsCore114BannerProps {
 
   //Environement props
   context: WebPartContext;
-  urlVars: {};
 
   //Banner related props
   errMessage: any;
@@ -45,7 +44,6 @@ export interface IFpsCore114BannerProps {
 
   // saveLoadAnalytics: any;
   FPSPropsObj: any;
-
 
 }
 
