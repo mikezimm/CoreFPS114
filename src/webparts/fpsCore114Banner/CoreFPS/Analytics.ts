@@ -1,7 +1,7 @@
 
 import { saveAnalytics3 } from '@mikezimm/npmfunctions/dist/Services/Analytics/analytics2';
 import { IZLoadAnalytics, IZSentAnalytics, } from '@mikezimm/npmfunctions/dist/Services/Analytics/interfaces';
-import { DisplayMode, Version } from '@microsoft/sp-core-library';
+import { DisplayMode, } from '@microsoft/sp-core-library';
 import * as strings from 'FpsCore114BannerWebPartStrings';
 import { IFpsCore114BannerProps } from '../components/IFpsCore114BannerProps';
 
