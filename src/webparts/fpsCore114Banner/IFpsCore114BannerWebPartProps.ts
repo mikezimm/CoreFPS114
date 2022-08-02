@@ -6,7 +6,7 @@
 // import { IExpandAudiences } from "@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsExpando";
 
 // import { IWebpartHistory, IWebpartHistoryItem2, } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistoryInterface';
-// import { IPinMeState } from "@mikezimm/npmfunctions/dist/PinMe/FPSPinMenu";
+// import { IPinMeState } from "@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMenu";
 
 import { IMinHeadingStyleProps } from "@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadingFunctions";
 

@@ -96,7 +96,7 @@ import { mainWebPartRenderBannerSetup } from './CoreFPS/WebPartRenderBanner';
 export const repoLink: IRepoLinks = links.gitRepoCoreFPS114Small;
 
 require('@mikezimm/npmfunctions/dist/Services/PropPane/GrayPropPaneAccordions.css');
-require('@mikezimm/npmfunctions/dist/PinMe/FPSPinMe.css');
+require('@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMe.css');
 require('@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadings.css');
 require('@mikezimm/npmfunctions/dist/PropPaneHelp/PropPanelHelp.css');
 

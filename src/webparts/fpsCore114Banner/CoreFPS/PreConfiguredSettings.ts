@@ -41,6 +41,7 @@ export const WPPresetEverywhere : IPreConfigSettings = {
     location: '*',
     props: {
         bannerTitle: "FPS Core 1.14 Banner Default",
+        defPinState: 'disabled',
     }
 };
 

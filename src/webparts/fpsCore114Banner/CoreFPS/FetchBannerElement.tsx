@@ -54,14 +54,14 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
   private PinExpandIcon = <Icon  title={ 'Expand' } iconName='DoubleChevronDown' onClick={ this.setPinFull.bind(this) } style={ this.smallerCmdStyles  }></Icon>;
   private PinDefault = <Icon  title={ 'Set to default' } iconName='ArrowDownRightMirrored8' onClick={ this.setPinDefault.bind(this) } style={ this.smallerCmdStyles  }></Icon>;
 
-  private makeExpandPropsCmdStyles( withLeftMargin: boolean ) {
-    let propsCmdCSS: React.CSSProperties = JSON.parse(JSON.stringify( this.props.parentProps.bannerProps.bannerCmdReactCSS ));
-    propsCmdCSS.backgroundColor = 'transparent';
-    if ( withLeftMargin === true ) propsCmdCSS.marginLeft = '30px';
-    propsCmdCSS.color = null; //Make sure icon is always visible
+  // private makeExpandPropsCmdStyles( withLeftMargin: boolean ) {
+  //   let propsCmdCSS: React.CSSProperties = JSON.parse(JSON.stringify( this.props.parentProps.bannerProps.bannerCmdReactCSS ));
+  //   propsCmdCSS.backgroundColor = 'transparent';
+  //   if ( withLeftMargin === true ) propsCmdCSS.marginLeft = '30px';
+  //   propsCmdCSS.color = null; //Make sure icon is always visible
 
-    return propsCmdCSS;
-  }
+  //   return propsCmdCSS;
+  // }
 
     
 /***
