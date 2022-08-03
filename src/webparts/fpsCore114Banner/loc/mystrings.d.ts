@@ -8,10 +8,6 @@ declare interface IFpsCore114BannerWebPartStrings {
   AppSharePointEnvironment: string;
   AppTeamsTabEnvironment: string;
 
-  // 1 - Analytics options
-  analyticsWeb: string;
-  analyticsList: string;
-
 }
 
 declare module 'FpsCore114BannerWebPartStrings' {

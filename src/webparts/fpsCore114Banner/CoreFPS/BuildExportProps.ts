@@ -96,7 +96,7 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
  * @returns exportObject
  */
 
-import { changeWebPartStyles, } from '../IFpsCore114BannerWebPartProps';
+// import { } from '../IFpsCore114BannerWebPartProps';
 
  export function buildExportProps( wpProps : IFpsCore114BannerWebPartProps, wpInstanceID: string, currentWeb: string, ) {
     let exportStructure :any = {};
@@ -107,13 +107,6 @@ import { changeWebPartStyles, } from '../IFpsCore114BannerWebPartProps';
     exportStructure.currentWeb = currentWeb;
 
     exportStructure.changePinMe = changePinMe;
-
-    exportStructure.changeRelated1 = changeRelated1;
-    exportStructure.changeRelated2 = changeRelated2;
-    exportStructure.pageLinks = changePageLinks;
-
-    exportStructure.changeHeadingStyleProps = changeHeadingStyleProps;
-    exportStructure.changeWebPartStyles = changeWebPartStyles;
 
     exportStructure.Visitor = changeCustomHelp;
 

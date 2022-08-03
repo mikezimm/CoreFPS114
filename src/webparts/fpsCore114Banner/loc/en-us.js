@@ -9,9 +9,5 @@ define([], function() {
     "AppSharePointEnvironment": "The app is running on SharePoint page",
     "AppTeamsTabEnvironment": "The app is running in Microsoft Teams",
 
-    "analyticsList": "FPSPageInfoViews",
-    "analyticsWeb": "/sites/Templates/Analytics/",
-
-    
   }
 });

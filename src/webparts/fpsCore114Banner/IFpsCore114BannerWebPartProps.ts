@@ -17,14 +17,15 @@ export const importBlockPropsThis = [ 'showSomeProps' ];
 
 export const importBlockProps = [ ...importBlockPropsFPS, ...importBlockPropsThis ];
 
-
 export const changePropertyGroupX = [ 'showSomeProps', 'showCustomProps' , 'showOOTBProps' , 'showApprovalProps' , 'propsTitleField', 'propsExpanded', 'selectedProperties' ];
 
-export const changeWebPartStyles = [ 'h1Style', 'h2Style' ,'h3Style' , 'pageInfoStyle', 'tocStyle', 'propsStyle' ];
-
 // export interface IFpsCore114BannerWebPartProps extends IMinWPBannerProps {
+  /**
+   * Extend with portions of FPS Props that are needed
+   * 
+   */
 export interface IFpsCore114BannerWebPartProps extends IMinBannerUIProps, IMinPinMeProps, IMinPandoramicProps, IMinBannerThemeProps, IMinCustomHelpProps, IMinPageStyleProps, IMinBannerUtilityProps, IMinFPSLegacyProps {
 
   description: string;
-  
+
 }

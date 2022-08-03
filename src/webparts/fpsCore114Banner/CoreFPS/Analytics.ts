@@ -2,8 +2,10 @@
 import { saveAnalytics3 } from '@mikezimm/npmfunctions/dist/Services/Analytics/analytics2';
 import { IZLoadAnalytics, IZSentAnalytics, } from '@mikezimm/npmfunctions/dist/Services/Analytics/interfaces';
 import { DisplayMode, } from '@microsoft/sp-core-library';
-import * as strings from 'FpsCore114BannerWebPartStrings';
 import { IFpsCore114BannerProps } from '../components/IFpsCore114BannerProps';
+
+export const analyticsList: string = "FPSPageInfoViews";
+export const analyticsWeb: string = "/sites/Templates/Analytics/";
 
 /***
  *     .d8b.  d8b   db  .d8b.  db      db    db d888888b d888888b  .o88b. .d8888. 
@@ -101,7 +103,7 @@ export function saveViewAnalytics( Title: string, Result: string, thisProps: IFp
 
       };
 
-      saveAnalytics3( strings.analyticsWeb , `${strings.analyticsList}` , saveObject, true );
+      saveAnalytics3( analyticsWeb , `${ analyticsList }` , saveObject, true );
 
       let saved = true;
       console.log('saved view info');

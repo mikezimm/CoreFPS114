@@ -15,6 +15,7 @@ const consolePrefix: string = 'fpsconsole: FpsCore114Banner';
 
 export default class FpsCore114Banner extends React.Component<IFpsCore114BannerProps, IFpsCore114BannerState > {
 
+
   private _updatePinState( newValue ) {
       this.setState({ pinState: newValue, });
   }

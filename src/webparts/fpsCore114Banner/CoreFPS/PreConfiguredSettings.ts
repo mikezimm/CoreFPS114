@@ -1,21 +1,10 @@
-import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
+// import { IPropertyFieldGroupOrPerson } from "@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker";
 // import { IFpsCore114BannerWebPartProps } from "../IFpsCore114BannerWebPartProps";
 
 import { IPreConfigSettings, IAllPreConfigSettings } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
 import { PresetFPSBanner } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfiguredConstants';
 import { encrptMeOriginalTest } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/logTest';
 import { createBannerStyleStr } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/defaults";
-
-const FinancialManualContacts: IPropertyFieldGroupOrPerson = {
-    id: '1',
-    description: '',
-    fullName: 'Financial Manual Support team',
-    login: '',
-    email: `ae57524a.${window.location.hostname}.onmicrosoft.com@amer.teams.ms`,
-    // jobTitle?: string;
-    // initials?: string;
-    imageUrl: null,
-};
 
 //Specific to this web part
 export const WPForceEverywhere : IPreConfigSettings = {
@@ -28,7 +17,6 @@ export const WPForceEverywhere : IPreConfigSettings = {
 
         // enableExpandoramic : false,
         showBanner : true,
-
     }
 };
 

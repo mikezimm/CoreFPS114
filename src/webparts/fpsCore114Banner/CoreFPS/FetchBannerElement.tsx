@@ -5,8 +5,6 @@ import { IFpsCore114BannerProps, IFpsCore114BannerState } from '../components/IF
 
 import { Icon, } from 'office-ui-fabric-react/lib/Icon';
 import { DisplayMode } from '@microsoft/sp-core-library';
-// import { TextField,  IStyleFunctionOrObject, ITextFieldStyleProps, ITextFieldStyles } from "office-ui-fabric-react";
-// import { bannerThemes, bannerThemeKeys, makeCSSPropPaneString, createBannerStyleStr, createBannerStyleObj, baseBannerCmdStyles } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/defaults';
 
 import { FPSPinMe, IPinMeState, getDefaultFPSPinState, IPinStatus } from '@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMenu';
 
@@ -81,7 +79,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
   private farBannerElements = this.buildFarBannerElements();
 
   private buildNearBannerElements() {
-    //See banner/NearAndFarSample.js for how to build this.
+
     let elements = [];
     // defaultBannerCommandStyles.fontWeight = 'bolder';
     // elements.push(<div style={{ paddingRight: null }} className={ '' } title={ title}>
@@ -158,8 +156,6 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     const { bannerProps, } = this.props.parentProps;
     const { displayMode, fpsPinMenu } = this.props.parentProps;
 
-    const PinMenuIcons: any [] = [];
-
    // let farBannerElementsArray = [];
    let farBannerElementsArray = [...this.farBannerElements,
     // this.props.showCodeIcon !== true ? null : <div title={'Show Code Details'}><Icon iconName={ 'Code' } onClick={ this.toggleOriginal.bind(this) } style={ bannerProps.bannerCmdReactCSS }></Icon></div>,
@@ -180,29 +176,12 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     }
   }
 
-  // if ( fpsPinMenu.forcePinState !== true ) {
-
-
-  // }
-
-  /***
-   *    d8888b.  .d8b.  d8b   db d8b   db d88888b d8888b. 
-   *    88  `8D d8' `8b 888o  88 888o  88 88'     88  `8D 
-   *    88oooY' 88ooo88 88V8o 88 88V8o 88 88ooooo 88oobY' 
-   *    88~~~b. 88~~~88 88 V8o88 88 V8o88 88~~~~~ 88`8b   
-   *    88   8D 88   88 88  V888 88  V888 88.     88 `88. 
-   *    Y8888P' YP   YP VP   V8P VP   V8P Y88888P 88   YD 
-   *                                                      
-   *                                                      
-   */
-
   let bannerSuffix = '';
   //Exclude the props.bannerProps.title if the webpart is narrow to make more responsive
   let bannerTitle = bannerProps.bannerWidth < 900 ? bannerProps.title : `${bannerProps.title} ${ ( bannerSuffix ? ' - ' + bannerSuffix : '' ) }`;
 
   if ( bannerTitle === '' ) { bannerTitle = 'ignore' ; }
   if ( displayMode === DisplayMode.Edit ) { bannerTitle += '' ; }
-
 
     /***
    *    d8888b.  .d8b.  d8b   db d8b   db d88888b d8888b.      d88888b db      d88888b .88b  d88. d88888b d8b   db d888888b 
@@ -264,6 +243,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
 
       showRepoLinks={ bannerProps.showRepoLinks }
       showExport={ bannerProps.showExport }
+
       //2022-02-17:  Added these for expandoramic mode
       domElement = { bannerProps.domElement }
       enableExpandoramic = { bannerProps.enableExpandoramic }
@@ -272,6 +252,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
       expandAlert = { bannerProps.expandAlert }
       expandConsole = { bannerProps.expandConsole }
       expandoPadding = { bannerProps.expandoPadding }
+
       beAUser = { bannerProps.beAUser }
       showBeAUserIcon = { bannerProps.showBeAUserIcon }
       beAUserFunction={ bannerProps.beAUserFunction }
@@ -284,7 +265,6 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     if ( consoleFunctions === true ) console.log('FetchBannerElement ~ setPinFull');
     const { displayMode, fpsPinMenu } = this.props.parentProps;
     FPSPinMe( fpsPinMenu.domElement, 'pinFull', null,  false, true, null, fpsPinMenu.pageLayout, displayMode );
-    // this.setState({ pinState: 'pinFull' });
     if ( this.props.updatePinState ) this.props.updatePinState( 'pinFull' );
   }
 
@@ -292,7 +272,6 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     if ( consoleFunctions === true ) console.log('FetchBannerElement ~ setPinMin');
     const { displayMode, fpsPinMenu } = this.props.parentProps;
     FPSPinMe( fpsPinMenu.domElement, 'pinMini', null,  false, true, null, fpsPinMenu.pageLayout, displayMode );
-    // this.setState({ pinState: 'pinMini' });
     if ( this.props.updatePinState ) this.props.updatePinState( 'pinMini' );
   }
 
@@ -300,7 +279,6 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     if ( consoleFunctions === true ) console.log('FetchBannerElement ~ setPinDefault');
     const { displayMode, fpsPinMenu } = this.props.parentProps;
     FPSPinMe( fpsPinMenu.domElement, 'normal', null,  false, true, null, fpsPinMenu.pageLayout, displayMode );
-    // this.setState({ pinState: 'normal' });
     if ( this.props.updatePinState ) this.props.updatePinState( 'normal' );
   }
 
