@@ -66,6 +66,7 @@ import { PreConfiguredProps } from './CoreFPS/PreConfiguredSettings';
  */
 
 import { webpartInstance, } from '@mikezimm/npmfunctions/dist/Services/DOM/FPSDocument';
+// import { getUrlVars } from '@mikezimm/npmfunctions/dist/Services/Logging/LogFunctions';
 
 import { IFPSUser } from '@mikezimm/npmfunctions/dist/Services/Users/IUserInterfaces';
 import { getFPSUser } from '@mikezimm/npmfunctions/dist/Services/Users/FPSUser';
@@ -214,6 +215,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   // private performance : ILoadPerformanceALVFM = null;
   // private bannerProps: IWebpartBannerProps = null;
 
+  // private urlParameters: any = {};
 
   //2022-04-07:  Intent of this is a one-time per instance to 'become a reader' level user.  aka, hide banner buttons that reader won't see
   private beAReader: boolean = false; 
@@ -240,6 +242,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
       //This indicates if its SPA, Teams etc.... always keep.
       this.properties.pageLayout =  this.context['_pageLayoutType']?this.context['_pageLayoutType'] : this.context['_pageLayoutType'];
+      // this.urlParameters = getUrlVars();
 
       this.FPSUser = getFPSUser( this.context as any, links.trickyEmails, this.trickyApp ) ;
       console.log( 'FPSUser: ', this.FPSUser );
