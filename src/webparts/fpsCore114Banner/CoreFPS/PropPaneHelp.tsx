@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon, } from 'office-ui-fabric-react/lib/Icon';
 
-import { escape } from 'lodash';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize,} from 'office-ui-fabric-react/lib/Pivot';
 
