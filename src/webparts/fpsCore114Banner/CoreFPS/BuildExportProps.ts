@@ -135,6 +135,8 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
     exportStructure.wpInstanceID = wpInstanceID;
     exportStructure.currentWeb = currentWeb;
 
+    exportStructure.changePinMe = changePinMe;
+
     exportStructure.Visitor = changeCustomHelp;
 
     exportStructure.BannerBasics = changeBannerBasics;
@@ -143,9 +145,10 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
     exportStructure.BannerTheme = changeBannerTheme;
     exportStructure.BannerOther = changeBannerUtility;
 
-    // exportStructure.Expando = changeExpando;
-
     exportStructure.fpsOptions1 = changePageStyle;
+
+    exportStructure.Expando = changeExpando;
+
     exportStructure.fpsOptions2 = changefpsOptions2;
 
     let exportObject = createExportObject( exportStructure, wpProps, exportIgnoreProps, false );
