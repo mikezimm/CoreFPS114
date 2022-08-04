@@ -14,8 +14,6 @@ export const WPForceEverywhere : IPreConfigSettings = {
 
         showRepoLinks : true,
         // showExport : false,
-
-        // enableExpandoramic : false,
         showBanner : true,
     }
 };
@@ -47,9 +45,9 @@ export const ForceSomeRandomSite : IPreConfigSettings = {
         // homeParentGearAudience: 'Some Test Value',
         // requireDocumentation: false,
         // requireContacts: true,
-        bannerStyleChoice: 'redDark',
-        bannerStyle: createBannerStyleStr( 'redDark', 'banner'),
-        bannerCmdStyle: createBannerStyleStr( 'redDark', 'cmd'),
+        // bannerStyleChoice: 'redDark',
+        // bannerStyle: createBannerStyleStr( 'redDark', 'banner'),
+        // bannerCmdStyle: createBannerStyleStr( 'redDark', 'cmd'),
     }
 };
 

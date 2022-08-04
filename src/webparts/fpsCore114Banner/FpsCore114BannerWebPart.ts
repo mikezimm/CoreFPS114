@@ -207,7 +207,6 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   private forceBanner = true ;
   private modifyBannerTitle = true ;
   private modifyBannerStyle = true ;
-  private enableExpandoramic = true ;
 
   private exitPropPaneChanged = false;
   private importErrorMessage = '';
@@ -249,7 +248,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
       expandoOnInit( this.properties, this.context.domElement, this.displayMode );
 
-      updateBannerThemeStyles( this.properties, 'corpDark1', false, this.properties.defPinState );
+      updateBannerThemeStyles( this.properties, this.properties.bannerStyleChoice ? this.properties.bannerStyleChoice : 'corpDark1', true, this.properties.defPinState );
  
       this.properties.webpartHistory = getWebPartHistoryOnInit( this.context.pageContext.user.displayName, this.properties.webpartHistory );
 
@@ -278,7 +277,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    let bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this.beAReader, this.FPSUser, repoLink.desc, 
        this.properties, repoLink, exportProps, strings , this.domElement.clientWidth, this.context, this.modifyBannerTitle, 
-       this.forceBanner, this.enableExpandoramic );
+       this.forceBanner, this.properties.enableExpandoramic );
 
     const element: React.ReactElement<IFpsCore114BannerProps> = React.createElement(
       FpsCore114Banner,
