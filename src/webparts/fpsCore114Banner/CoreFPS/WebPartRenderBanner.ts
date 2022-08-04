@@ -29,7 +29,7 @@ export function mainWebPartRenderBannerSetup(
     // expandoErrorObj has not yet been set up properly in this function since FPSPageInfo did not use it.
     let expandoErrorObj: any = {};
 
-    let renderAsReader = displayMode === DisplayMode.Read && beAReader === true ? true : false;
+    const renderAsReader = displayMode === DisplayMode.Read && beAReader === true ? true : false;
 
     let errMessage = '';
     let validDocsContacts = ''; //This may no longer be needed if links below are commented out.
@@ -45,7 +45,7 @@ export function mainWebPartRenderBannerSetup(
       }
     }
 
-    let errorObjArray :  any[] =[];
+    const errorObjArray :  any[] =[];
 
     /***
       *    d8888b.  .d8b.  d8b   db d8b   db d88888b d8888b. 
@@ -58,11 +58,11 @@ export function mainWebPartRenderBannerSetup(
       *                                                      
       */
 
-    let replacePanelWarning = `Anyone with lower permissions than '${thisProps.fullPanelAudience}' will ONLY see this content in panel`;
+    const replacePanelWarning = `Anyone with lower permissions than '${thisProps.fullPanelAudience}' will ONLY see this content in panel`;
 
     console.log('mainWebPart: buildBannerSettings ~ 387',   );
 
-    let buildBannerSettings : IBuildBannerSettings = {
+    const buildBannerSettings : IBuildBannerSettings = {
 
       FPSUser: FPSUser,
       //this. related info
@@ -115,7 +115,7 @@ export function mainWebPartRenderBannerSetup(
 
     thisProps.showBannerGear = verifyAudienceVsUser( FPSUser , showTricks, thisProps.homeParentGearAudience, null, renderAsReader );
 
-    let bannerSetup = buildBannerProps( thisProps , FPSUser, buildBannerSettings, showTricks, renderAsReader, displayMode );
+    const bannerSetup = buildBannerProps( thisProps , FPSUser, buildBannerSettings, showTricks, renderAsReader, displayMode );
     if ( !thisProps.bannerTitle || thisProps.bannerTitle === '' ) { 
       if ( thisProps.defPinState !== 'normal' ) {
         bannerSetup.bannerProps.title = strings.bannerTitle ;
@@ -126,7 +126,7 @@ export function mainWebPartRenderBannerSetup(
 
     errMessage = bannerSetup.errMessage;
 
-    let bannerProps: IWebpartBannerProps = bannerSetup.bannerProps;
+    const bannerProps: IWebpartBannerProps = bannerSetup.bannerProps;
     expandoErrorObj = bannerSetup.errorObjArray; 
 
     bannerProps.enableExpandoramic = enableExpandoramic; //Hard code this option for FPS PageInfo web part only because of PinMe option

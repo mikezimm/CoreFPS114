@@ -18,7 +18,7 @@ export const analyticsWeb: string = "/sites/Templates/Analytics/";
  *                                                                                
  */
 
-export function saveViewAnalytics( Title: string, Result: string, thisProps: IFpsCore114BannerProps, analyticsWasExecuted: boolean) {
+export function saveViewAnalytics( Title: string, Result: string, thisProps: IFpsCore114BannerProps, analyticsWasExecuted: boolean) : boolean {
 
     if ( analyticsWasExecuted === true ) {
       console.log('saved view info already');
@@ -42,9 +42,9 @@ export function saveViewAnalytics( Title: string, Result: string, thisProps: IFp
 
       };
 
-      let zzzRichText1Obj = null;
-      let zzzRichText2Obj = null;
-      let zzzRichText3Obj = null;
+      const zzzRichText1Obj = null;
+      const zzzRichText2Obj = null;
+      const zzzRichText3Obj = null;
 
       console.log( 'zzzRichText1Obj:', zzzRichText1Obj);
       console.log( 'zzzRichText2Obj:', zzzRichText2Obj);
@@ -67,9 +67,9 @@ export function saveViewAnalytics( Title: string, Result: string, thisProps: IFp
       console.log('zzzRichText2 length:', zzzRichText2 ? zzzRichText2.length : 0 );
       console.log('zzzRichText3 length:', zzzRichText3 ? zzzRichText3.length : 0 );
 
-      let FPSProps = JSON.stringify( FPSPropsObj );
+      const FPSProps = JSON.stringify( FPSPropsObj );
 
-      let saveObject: IZSentAnalytics = {
+      const saveObject: IZSentAnalytics = {
         loadProperties: loadProperties,
 
         Title: Title,  //General Label used to identify what analytics you are saving:  such as Web Permissions or List Permissions.
@@ -105,7 +105,7 @@ export function saveViewAnalytics( Title: string, Result: string, thisProps: IFp
 
       saveAnalytics3( analyticsWeb , `${ analyticsList }` , saveObject, true );
 
-      let saved = true;
+      const saved = true;
       console.log('saved view info');
       return saved;
 

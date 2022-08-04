@@ -99,7 +99,7 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
 // import { } from '../IFpsCore114BannerWebPartProps';
 
  export function buildExportProps( wpProps : IFpsCore114BannerWebPartProps, wpInstanceID: string, currentWeb: string, ) {
-    let exportStructure :any = {};
+  const exportStructure :any = {};
     // let wpInstanceIDSplit = wpInstanceID.split('|');
     // exportStructure.wpInstanceID = [ wpInstanceIDSplit[0], wpInstanceIDSplit[1], wpInstanceIDSplit[3]].join(' ~ ');
 
@@ -122,7 +122,7 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
 
     exportStructure.fpsOptions2 = changefpsOptions2;
 
-    let exportObject = createExportObject( exportStructure, wpProps, exportIgnoreProps, false );
+    const exportObject = createExportObject( exportStructure, wpProps, exportIgnoreProps, false );
 
     console.log('Exportable Props:', exportObject );
     return exportObject;
@@ -130,7 +130,7 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
   }
 
   export function buildFPSAnalyticsProps( wpProps : IFpsCore114BannerWebPartProps, wpInstanceID: string, currentWeb: string, ) {
-    let exportStructure :any = {};
+    const exportStructure :any = {};
 
     exportStructure.wpInstanceID = wpInstanceID;
     exportStructure.currentWeb = currentWeb;
@@ -151,7 +151,7 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
 
     exportStructure.fpsOptions2 = changefpsOptions2;
 
-    let exportObject = createExportObject( exportStructure, wpProps, exportIgnoreProps, false );
+    const exportObject = createExportObject( exportStructure, wpProps, exportIgnoreProps, false );
 
     console.log('Exportable Props:', exportObject );
     return exportObject;

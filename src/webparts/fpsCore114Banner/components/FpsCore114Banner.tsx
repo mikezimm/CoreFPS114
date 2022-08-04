@@ -46,7 +46,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
     public componentDidMount() {
       if ( fpsconsole === true ) console.log( `${consolePrefix} ~ componentDidMount` );
   
-      let analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted );
+      const analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted );
   
       if ( this.state.analyticsWasExecuted !==  analyticsWasExecuted ) {
         this.setState({ analyticsWasExecuted: analyticsWasExecuted });
@@ -90,14 +90,14 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       userDisplayName
     } = this.props;
 
-    let devHeader = this.state.showDevHeader === true ? <div><b>Props: </b> { 'this.props.lastPropChange' + ', ' + 'this.props.lastPropDetailChange' } - <b>State: lastStateChange: </b> { this.state.lastStateChange  } </div> : null ;
+    const devHeader = this.state.showDevHeader === true ? <div><b>Props: </b> { 'this.props.lastPropChange' + ', ' + 'this.props.lastPropDetailChange' } - <b>State: lastStateChange: </b> { this.state.lastStateChange  } </div> : null ;
 
     const Banner = <FetchBanner 
       parentProps={ this.props }
       parentState={ this.state }
       updatePinState = { this._updatePinState.bind(this) }
       pinState = { this.state.pinState }
-    ></FetchBanner>;
+    />;
 
     return (
       <section className={`${styles.fpsCore114Banner} ${hasTeamsContext ? styles.teams : ''}`}>

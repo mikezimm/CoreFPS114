@@ -42,9 +42,9 @@ const RequestStorageHere = <span>Please request storage <a href={tenantServiceRe
 
 const LinkFindInternalName = <a href="https://tomriha.com/what-is-sharepoint-column-internal-name-and-where-to-find-it/" target="_blank">Finding Internal Name of a column</a>;
 
-const ShowCodeIcon = <Icon iconName={ 'Code' } title='ShowCode icon' style={ defaultBannerCommandStyles }></Icon>;
-const CheckReferences = <Icon iconName={ 'PlugDisconnected' } title='Check Files' style={ defaultBannerCommandStyles }></Icon>;
-const ShowRawHTML = <Icon iconName={ 'FileCode' } title='Show Raw HTML here' style={ defaultBannerCommandStyles }></Icon>;
+const ShowCodeIcon = <Icon iconName={ 'Code' } title='ShowCode icon' style={ defaultBannerCommandStyles }/>;
+const CheckReferences = <Icon iconName={ 'PlugDisconnected' } title='Check Files' style={ defaultBannerCommandStyles }/>;
+const ShowRawHTML = <Icon iconName={ 'FileCode' } title='Show Raw HTML here' style={ defaultBannerCommandStyles }/>;
 
 const padRight15: React.CSSProperties = { paddingRight: '15px' };
 const padRight40: React.CSSProperties = { paddingRight: '40px' };
@@ -54,7 +54,7 @@ const ReactCSSPropsNote = <span style={{ color: 'darkred', fontWeight: 500 }}>Re
 export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
 
   console.log( 'PropPaneHelp ~ sitePresets: ', sitePresets );
-  let preSetsContent = SitePresetsInfo( sitePresets );
+  const preSetsContent = SitePresetsInfo( sitePresets );
 
   const WebPartHelpElement = <div style={{ overflowX: 'scroll' }}>
 

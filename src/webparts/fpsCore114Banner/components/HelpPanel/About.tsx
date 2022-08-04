@@ -11,7 +11,7 @@ export const panelVersionNumber = '2022-07-22 -  1.0.0.01'; //Added to show in p
 
 export function aboutTable( repoLinks: IRepoLinks, showRepoLinks: boolean ) {
 
-    let table : IHelpTable  = {
+    const table : IHelpTable  = {
         heading: 'Version History',
         headers: ['Date','Version','Focus'],
         rows: [],

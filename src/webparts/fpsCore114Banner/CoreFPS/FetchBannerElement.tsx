@@ -38,22 +38,22 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
   // private baseCmdStyles: React.CSSProperties = createBannerStyleObj( 'corpDark1', 'cmd' );
 
   private makeSmallerCmdStyles() {
-    let smaller: React.CSSProperties = JSON.parse(JSON.stringify( this.props.parentProps.bannerProps.bannerCmdReactCSS ));
+    const smaller: React.CSSProperties = JSON.parse(JSON.stringify( this.props.parentProps.bannerProps.bannerCmdReactCSS ));
     smaller.fontSize = 'larger';
     return smaller;
   }
 
   private smallerCmdStyles: React.CSSProperties = this.makeSmallerCmdStyles();
 
-  // private FeedbackIcon = <Icon title={ 'Submit Feedback' } iconName='Feedback' onClick={ this.sendFeedback.bind(this) } style={ this.makeExpandPropsCmdStyles( false ) }></Icon>;
+  // private FeedbackIcon = <Icon title={ 'Submit Feedback' } iconName='Feedback' onClick={ this.sendFeedback.bind(this) } style={ this.makeExpandPropsCmdStyles( false ) }/>;
 
-  private PinFullIcon = <Icon title={ 'Pin to top' } iconName='Pinned' onClick={ this.setPinFull.bind(this) } style={ this.smallerCmdStyles }></Icon>;
-  private PinMinIcon = <Icon  title={ 'Minimize' } iconName='CollapseMenu' onClick={ this.setPinMin.bind(this) } style={ this.smallerCmdStyles  }></Icon>;
-  private PinExpandIcon = <Icon  title={ 'Expand' } iconName='DoubleChevronDown' onClick={ this.setPinFull.bind(this) } style={ this.smallerCmdStyles  }></Icon>;
-  private PinDefault = <Icon  title={ 'Set to default' } iconName='ArrowDownRightMirrored8' onClick={ this.setPinDefault.bind(this) } style={ this.smallerCmdStyles  }></Icon>;
+  private PinFullIcon = <Icon title={ 'Pin to top' } iconName='Pinned' onClick={ this.setPinFull.bind(this) } style={ this.smallerCmdStyles }/>;
+  private PinMinIcon = <Icon  title={ 'Minimize' } iconName='CollapseMenu' onClick={ this.setPinMin.bind(this) } style={ this.smallerCmdStyles  }/>;
+  private PinExpandIcon = <Icon  title={ 'Expand' } iconName='DoubleChevronDown' onClick={ this.setPinFull.bind(this) } style={ this.smallerCmdStyles  }/>;
+  private PinDefault = <Icon  title={ 'Set to default' } iconName='ArrowDownRightMirrored8' onClick={ this.setPinDefault.bind(this) } style={ this.smallerCmdStyles  }/>;
 
   // private makeExpandPropsCmdStyles( withLeftMargin: boolean ) {
-  //   let propsCmdCSS: React.CSSProperties = JSON.parse(JSON.stringify( this.props.parentProps.bannerProps.bannerCmdReactCSS ));
+  //   const propsCmdCSS: React.CSSProperties = JSON.parse(JSON.stringify( this.props.parentProps.bannerProps.bannerCmdReactCSS ));
   //   propsCmdCSS.backgroundColor = 'transparent';
   //   if ( withLeftMargin === true ) propsCmdCSS.marginLeft = '30px';
   //   propsCmdCSS.color = null; //Make sure icon is always visible
@@ -80,16 +80,16 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
 
   private buildNearBannerElements() {
 
-    let elements = [];
+    const elements = [];
     // defaultBannerCommandStyles.fontWeight = 'bolder';
     // elements.push(<div style={{ paddingRight: null }} className={ '' } title={ title}>
-    //   <Icon iconName='WindDirection' onClick={ this.jumpToParentSite.bind(this) } style={ defaultBannerCommandStyles }></Icon>
+    //   <Icon iconName='WindDirection' onClick={ this.jumpToParentSite.bind(this) } style={ defaultBannerCommandStyles }/>
     // </div>);
     return elements;
   }
 
   private buildFarBannerElements() {
-    let farElements: any[] = [];
+    const farElements: any[] = [];
 
     if ( this.props.parentProps.bannerProps.showTricks === true ) {
       farElements.push( null );
@@ -123,7 +123,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
 
     //Copied from FPSPageInfo.tsx componentDidMount
     const { displayMode, fpsPinMenu } = this.props.parentProps;
-    let tempPinState: IPinMeState = displayMode === DisplayMode.Edit ? 'normal' : this.props.pinState;
+    const tempPinState: IPinMeState = displayMode === DisplayMode.Edit ? 'normal' : this.props.pinState;
     FPSPinMe( fpsPinMenu.domElement, tempPinState, null,  false, true, null, fpsPinMenu.pageLayout, displayMode );
 
   }
@@ -144,7 +144,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
   public componentDidUpdate(prevProps){
     if ( consoleFunctions === true ) console.log('FetchBannerElement ~ componentDidUpdate');
     const { displayMode, fpsPinMenu } = this.props.parentProps;
-    let pinStatus: IPinStatus = getDefaultFPSPinState ( prevProps.parentProps.fpsPinMenu, fpsPinMenu, displayMode );
+    const pinStatus: IPinStatus = getDefaultFPSPinState ( prevProps.parentProps.fpsPinMenu, fpsPinMenu, displayMode );
 
     if ( pinStatus.refresh === true ) {
       FPSPinMe( fpsPinMenu.domElement, pinStatus.defPinState, null,  false, true, null, fpsPinMenu.pageLayout, displayMode );
@@ -156,9 +156,9 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     const { bannerProps, } = this.props.parentProps;
     const { displayMode, fpsPinMenu } = this.props.parentProps;
 
-   // let farBannerElementsArray = [];
-   let farBannerElementsArray = [...this.farBannerElements,
-    // this.props.showCodeIcon !== true ? null : <div title={'Show Code Details'}><Icon iconName={ 'Code' } onClick={ this.toggleOriginal.bind(this) } style={ bannerProps.bannerCmdReactCSS }></Icon></div>,
+   // const farBannerElementsArray = [];
+   const farBannerElementsArray = [...this.farBannerElements,
+    // this.props.showCodeIcon !== true ? null : <div title={'Show Code Details'}><Icon iconName={ 'Code' } onClick={ this.toggleOriginal.bind(this) } style={ bannerProps.bannerCmdReactCSS }/></div>,
   ];
 
   //If there is no updatePinState function, then the web part does not use it so ignore this code.
@@ -176,7 +176,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     }
   }
 
-  let bannerSuffix = '';
+  const bannerSuffix = '';
   //Exclude the props.bannerProps.title if the webpart is narrow to make more responsive
   let bannerTitle = bannerProps.bannerWidth < 900 ? bannerProps.title : `${bannerProps.title} ${ ( bannerSuffix ? ' - ' + bannerSuffix : '' ) }`;
 
@@ -195,7 +195,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
    */
 
 
-    let forceNarrowStyles = this.props.pinState === 'pinFull' || this.props.pinState === 'pinMini' ? true : false ;
+    const forceNarrowStyles = this.props.pinState === 'pinFull' || this.props.pinState === 'pinMini' ? true : false ;
 
     //If there is no updatePinState function, then the web part does not use it so ignore this code.
     if ( !this.props.updatePinState ) {

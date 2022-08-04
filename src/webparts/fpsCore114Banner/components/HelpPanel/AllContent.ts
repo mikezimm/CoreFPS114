@@ -20,7 +20,7 @@ import { whyContent } from './Whyme';  //2022-01-31: Added Pivot Tiles
 
 export function getBannerPages ( bannerProps: IWebpartBannerProps ) {
 
-    let result : IBannerPages = {
+    const result : IBannerPages = {
         whyContent:  whyContent( bannerProps.gitHubRepo),
         aboutTable:  aboutTable( bannerProps.gitHubRepo, bannerProps.showRepoLinks ),
         gettingStartedContent:  gettingStartedContent( bannerProps.gitHubRepo),
