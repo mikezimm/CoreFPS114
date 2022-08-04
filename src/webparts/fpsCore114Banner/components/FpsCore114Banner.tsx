@@ -4,9 +4,8 @@ import { IFpsCore114BannerProps, IFpsCore114BannerState } from './IFpsCore114Ban
 import { escape } from '@microsoft/sp-lodash-subset';
 
 
-import { createBannerStyleObj, } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/defaults';
 import { saveViewAnalytics } from '../CoreFPS/Analytics';
-import FetchBanner, {  } from '../CoreFPS/FetchBannerElement';
+import FetchBanner from '../CoreFPS/FetchBannerElement';
 
 //Use this to add more console.logs for this component
 const urlParams : URLSearchParams = new URLSearchParams( window.location.search );
@@ -19,15 +18,6 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
   private _updatePinState( newValue ) {
       this.setState({ pinState: newValue, });
   }
-
-  private baseCmdStyles: React.CSSProperties = createBannerStyleObj( 'corpDark1', 'cmd' );
-
-  private makeSmallerCmdStyles() {
-    let smaller: React.CSSProperties = JSON.parse(JSON.stringify( this.baseCmdStyles ));
-    smaller.fontSize = 'larger';
-    return smaller;
-  }
-
 
    /***
   *     .o88b.  .d88b.  d8b   db .d8888. d888888b d8888b. db    db  .o88b. d888888b  .d88b.  d8888b. 
@@ -55,9 +45,6 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
     public componentDidMount() {
       if ( fpsconsole === true ) console.log( `${consolePrefix} ~ componentDidMount` );
-      // let tempPinState: IPinMeState = this.props.displayMode === DisplayMode.Edit ? 'normal' : this.state.pinState;
-      // FPSPinMe( this.props.fpsPinMenu.domElement, tempPinState, null,  false, true, null, this.props.fpsPinMenu.pageLayout, this.props.displayMode );
-      // this.props.saveLoadAnalytics( 'FPS Page Info View', 'didMount');
   
       let analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted );
   
