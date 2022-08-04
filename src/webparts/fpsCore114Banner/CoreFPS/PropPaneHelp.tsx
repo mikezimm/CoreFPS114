@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Icon, } from 'office-ui-fabric-react/lib/Icon';
 
+import { escape } from 'lodash';
+
 import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize,} from 'office-ui-fabric-react/lib/Pivot';
 
 import { gitRepoALVFinManSmall } from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
@@ -160,7 +162,7 @@ export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
               <li><b>linkProp - </b>Static/Internal name of the field with the go-to link.  Leave empty to not have it clickable.</li>
               <li><b>displayProp - </b>Static/Internal name of the field with the related info text</li>
               <li><b>isExpanded - </b>Default state when loading the page</li>
-              <li><b>itemsStyle - </b> { ReactCSSPropsNote } "fontWeight":600,"color":"yellow" </li>
+              <li><b>itemsStyle - </b> { ReactCSSPropsNote } { escape( `"fontWeight":600,"color":"yellow"` )} </li>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -176,7 +178,7 @@ export function getWebPartHelpElement ( sitePresets : ISitePreConfigProps ) {
                   <li>Sets default visibility to Expanded</li>
                   <li>Gets related info from web:  /sites/financemanual/manual</li>
                   <li>Gets related info from Library:  Site Pages</li>
-                  <li>Gets items where the lookup column  StandardDocuments has the same value as the current site's PageId</li>
+                  <li>{ escape( `Gets items where the lookup column  StandardDocuments has the same value as the current site's PageId` )} </li>
                   <li>Sets the goto link location as File/ServerRelativeUrl.  You could also use a text column for the link or build up a link to anything</li>
                   <li>Sets the display text of the link to the Title of the lookup item</li>
                 </ol>
