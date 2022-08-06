@@ -195,7 +195,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
    */
 
 
-    const forceNarrowStyles = this.props.pinState === 'pinFull' || this.props.pinState === 'pinMini' ? true : false ;
+    let forceNarrowStyles = this.props.pinState === 'pinFull' || this.props.pinState === 'pinMini' ? true : false ;
 
     //If there is no updatePinState function, then the web part does not use it so ignore this code.
     if ( !this.props.updatePinState ) {
