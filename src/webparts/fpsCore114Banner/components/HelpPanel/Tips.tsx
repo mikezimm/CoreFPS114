@@ -8,10 +8,9 @@
 
 // import * as StdIcons from '@mikezimm/npmfunctions/dist/Icons/iconNames';
 
-// import { IRepoLinks } from '@mikezimm/npmfunctions/dist/Links/CreateLinks';
-
-// import { convertIssuesMarkdownStringToSpan } from '@mikezimm/npmfunctions/dist/Elements/Markdown';
-
+// import { IHelpTable, } from '../../fpsReferences';
+// import { IRepoLinks, repoLink, } from '../../fpsReferences';
+// import { convertIssuesMarkdownStringToSpan } from '../../fpsReferences';
 
 // const iconStyles: any = { root: {
 //   fontSize: 'x-large',
@@ -29,22 +28,22 @@
 
 export const webParTips : any[] = [
 
-//Sample of basic tip
-
-//   <tr><td style={tipCellStyle}>CTRL-Click <b>Category</b></td>
-//       <td style={tipCellStyle}>Top Left</td>
-//       <td>Set that Category as the "Hero" Category</td></tr>,
-
-//Sample of tip with an icon in it
-//   <tr><td style={tipCellStyle}>Click on &nbsp; <b>Grid Icon { gridIcon } { tilesIcon } </b></td>
-//       <td style={tipCellStyle}>Upper Right</td>
-//       <td>Change format of tiles to Cards, List, Tiles</td></tr>,
-
-];
-
-
-export function getRandomTip( ) {
-
-  return webParTips[Math.floor(Math.random() * webParTips.length)];
-
-}
+  //Sample of basic tip
+  
+  //   <tr><td style={tipCellStyle}>CTRL-Click <b>Category</b></td>
+  //       <td style={tipCellStyle}>Top Left</td>
+  //       <td>Set that Category as the "Hero" Category</td></tr>,
+  
+  //Sample of tip with an icon in it
+  //   <tr><td style={tipCellStyle}>Click on &nbsp; <b>Grid Icon { gridIcon } { tilesIcon } </b></td>
+  //       <td style={tipCellStyle}>Upper Right</td>
+  //       <td>Change format of tiles to Cards, List, Tiles</td></tr>,
+  
+  ];
+  
+  
+  export function getRandomTip( ) {
+  
+    return webParTips[Math.floor(Math.random() * webParTips.length)];
+  
+  }

@@ -1,19 +1,16 @@
 import * as React from 'react';
 
-import { IFpsCore114BannerProps, IFpsCore114BannerState } from '../components/IFpsCore114BannerProps';
-// import { escape } from '@microsoft/sp-lodash-subset';
-
 import { Icon, } from 'office-ui-fabric-react/lib/Icon';
 import { DisplayMode } from '@microsoft/sp-core-library';
 
-import { FPSPinMe, IPinMeState, getDefaultFPSPinState, IPinStatus } from '@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMenu';
-
 import WebpartBanner from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/banner/onLocal/component";
-import { IBannerPages } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/bannerProps';
 
-import { getWebPartHelpElement } from '../CoreFPS/PropPaneHelp';
+import { FPSPinMe, IPinMeState, getDefaultFPSPinState, IPinStatus } from '../fpsReferences';
+import { IBannerPages  } from '../fpsReferences';
 
+import { getWebPartHelpElement  } from './PropPaneHelp';
 import { getBannerPages } from '../components/HelpPanel/AllContent';
+import { IFpsCore114BannerProps, IFpsCore114BannerState } from '../components/IFpsCore114BannerProps';
 
 //Use this to add more console.logs for this component
 const consoleFunctions: boolean = true;

@@ -13,6 +13,8 @@
  import "@pnp/sp/webs";
  import "@pnp/sp/site-groups/web";
 
+
+ 
  /***
   *    d888888b .88b  d88. d8888b.  .d88b.  d8888b. d888888b      d8b   db d8888b. .88b  d88.      d88888b db    db d8b   db  .o88b. d888888b d888888b  .d88b.  d8b   db .d8888. 
   *      `88'   88'YbdP`88 88  `8D .8P  Y8. 88  `8D `~~88~~'      888o  88 88  `8D 88'YbdP`88      88'     88    88 888o  88 d8P  Y8 `~~88~~'   `88'   .8P  Y8. 888o  88 88'  YP 
@@ -24,10 +26,9 @@
   *                                                                                                                                                                              
   */
 
-//  import { getHelpfullError } from '@mikezimm/npmfunctions/dist/Services/Logging/ErrorHandler';
-//  import { getHelpfullErrorV2, saveThisLogItem } from  '@mikezimm/npmfunctions/dist/Services/Logging/ErrorHandler';
+//  import { getHelpfullError, getHelpfullError } from '../fpsReferences';
 
- import { createExportObject, } from '@mikezimm/npmfunctions/dist/Services/PropPane/ExportFunctions';
+import { createExportObject, } from '../fpsReferences';
 //  import { IMinExportObject, } from '@mikezimm/npmfunctions/dist/Services/PropPane/ExportFunctions';
 
   /***
@@ -41,24 +42,17 @@
   *                                                                                                                                               
   */
 
-//  import * as strings from 'FpsCore114BannerWebPartStrings';
+//  import * as strings from 'FpsCore115BannerWebPartStrings';
 
-import { IFpsCore114BannerWebPartProps } from '../IFpsCore114BannerWebPartProps';
-import { exportIgnoreProps, importBlockProps, } from '../IFpsCore114BannerWebPartProps';
+import { IFpsCore114BannerWebPartProps, exportIgnoreProps, } from '../IFpsCore114BannerWebPartProps';
 
-import { changeCustomHelp, changeExpando, changeBanner, changePageStyle, changefpsOptions2, exportIgnorePropsFPS, importBlockPropsFPS, } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
+import { changeCustomHelp, changeExpando, changeBanner, changePageStyle, changefpsOptions2,  } from '../fpsReferences';
 
-import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerUtility,  } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
-import { changePinMe,  } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
+import { changeBannerBasics, changeBannerNav, changeBannerTheme, changeBannerUtility,  } from '../fpsReferences';
 
-import { changeRelated1, changeRelated2, changePageLinks,  } from '@mikezimm/npmfunctions/dist/RelatedItems/IRelatedWebPartProps';
-import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadingFunctions';
+import { changePinMe,  } from '../fpsReferences';
 
-
-// import { ILoadPerformanceALVFM, IPerformanceOp } from './components/Performance/IFpsCore114BannerWebPartProps';
-
-
-
+import { importBlockProps } from '../IFpsCore114BannerWebPartProps';
 
 /***
  *    .d8888.  .d8b.  .88b  d88. d8888b. db      d88888b       .d88b.  d8b   db db      db    db                                                                            
@@ -77,6 +71,18 @@ import { changeHeadingStyleProps,  } from '@mikezimm/npmfunctions/dist/HeadingCS
  *     `Y88P'  `Y88P'  88         YP            YP     `Y88P'       Y88888P  `Y88P'   `Y88P' YP   YP Y88888P      88      88   YD  `Y88P'  Y8888P  Y88888P  `Y88P'    YP    
  *                                                                                                                                                                          
  *                                                                                                                                                                          
+ */
+
+
+/***
+ *    d88888b db    db d8888b.  .d88b.  d8888b. d888888b      d8888b. d8888b.  .d88b.  d8888b. .d8888. 
+ *    88'     `8b  d8' 88  `8D .8P  Y8. 88  `8D `~~88~~'      88  `8D 88  `8D .8P  Y8. 88  `8D 88'  YP 
+ *    88ooooo  `8bd8'  88oodD' 88    88 88oobY'    88         88oodD' 88oobY' 88    88 88oodD' `8bo.   
+ *    88~~~~~  .dPYb.  88~~~   88    88 88`8b      88         88~~~   88`8b   88    88 88~~~     `Y8b. 
+ *    88.     .8P  Y8. 88      `8b  d8' 88 `88.    88         88      88 `88. `8b  d8' 88      db   8D 
+ *    Y88888P YP    YP 88       `Y88P'  88   YD    YP         88      88   YD  `Y88P'  88      `8888Y' 
+ *                                                                                                     
+ *                                                                                                     
  */
 
 

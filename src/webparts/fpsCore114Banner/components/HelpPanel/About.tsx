@@ -1,15 +1,14 @@
 import * as React from 'react';
 
-//import { IHelpTableRow, IHelpTable, IPageContent, ISinglePageProps } from '../Component/ISinglePageProps';
-import { IHelpTable, } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/banner/SinglePage/ISinglePageProps';
+import { IHelpTable, } from '../../fpsReferences';
+import { IRepoLinks, repoLink, } from '../../fpsReferences';
+import { convertIssuesMarkdownStringToSpan } from '../../fpsReferences';
 
-import { IRepoLinks } from '@mikezimm/npmfunctions/dist/Links/CreateLinks';
-
-import { createAboutRow } from '@mikezimm/npmfunctions/dist/CoreFPS/BannerPageMisc';
+import { createAboutRow } from '../../fpsReferences';
 
 export const panelVersionNumber = '2022-07-22 -  1.0.0.01'; //Added to show in panel
 
-export function aboutTable( repoLinks: IRepoLinks, showRepoLinks: boolean ) {
+export function aboutTable( showRepoLinks: boolean ) {
 
     const table : IHelpTable  = {
         heading: 'Version History',
@@ -30,7 +29,7 @@ export function aboutTable( repoLinks: IRepoLinks, showRepoLinks: boolean ) {
      * WARNING:  DO NOT add any CDNs to Global Warn or Approve unless you want it to apply to JS as well.
      */
 
-    table.rows.push( createAboutRow('2022-07-22',"1.0.0.01","Initial Build", showRepoLinks === true ? repoLinks : null ) );
+    table.rows.push( createAboutRow('2022-07-22',"1.0.0.01","Initial Build", showRepoLinks === true ? repoLink : null ) );
     
     return { table: table };
 

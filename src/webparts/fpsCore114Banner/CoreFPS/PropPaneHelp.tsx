@@ -1,23 +1,22 @@
 import * as React from 'react';
+
 import { Icon, } from 'office-ui-fabric-react/lib/Icon';
 
 import { escape } from '@microsoft/sp-lodash-subset';
 
+import ReactJson from "react-json-view";
+
 import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize,} from 'office-ui-fabric-react/lib/Pivot';
 
-import { gitRepoALVFinManSmall } from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
+import { BannerHelp, FPSBasicHelp, FPSExpandHelp, ImportHelp, SinglePageAppHelp, VisitorHelp, PinMeHelp,  } from '../fpsReferences';
 
-import { defaultBannerCommandStyles, } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/defaults";
+import {HandleBarReplacements, defaultBannerCommandStyles } from '../fpsReferences';
 
-import ReactJson from "react-json-view";
-// import { FontWeights } from 'office-ui-fabric-react';
-import { BannerHelp, FPSBasicHelp, FPSExpandHelp, ImportHelp, SinglePageAppHelp, VisitorHelp, PinMeHelp, SitePresetsInfo } from '@mikezimm/npmfunctions/dist/PropPaneHelp/FPSCommonOnNpm';
+import { repoLink } from '../fpsReferences';
 
-import {HandleBarReplacements } from '@mikezimm/npmfunctions/dist/Services/Strings/handleBars';
+import { ISitePreConfigProps, SitePresetsInfo } from '../fpsReferences';
 
 require('@mikezimm/npmfunctions/dist/PropPaneHelp/PropPanelHelp.css');
-
-import { ISitePreConfigProps, } from '@mikezimm/npmfunctions/dist/PropPaneHelp/PreConfigFunctions';
 
 const SampleRelatedInfoProps =         {
   description: 'Standards',
@@ -37,7 +36,7 @@ export function putObjectIntoJSON ( obj: any, name: string = null ) {
   return <ReactJson src={ obj } name={ name } collapsed={ false } displayDataTypes={ false } displayObjectSize={ false } enableClipboard={ true } style={{ padding: '20px 0px' }} theme= { 'rjv-default' } indentWidth={ 2}/>;
 }
 
-const PleaseSeeWiki = <p>Please see the { gitRepoALVFinManSmall.wiki }  for more information</p>;
+const PleaseSeeWiki = <p>Please see the { repoLink.wiki }  for more information</p>;
 
 const tenantServiceRequestURL = `https://servicenow.${window.location.hostname}.com/`;
 const RequestStorageHere = <span>Please request storage <a href={tenantServiceRequestURL} target="_blank">here in Service Now.</a></span>;

@@ -1,24 +1,14 @@
+
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { DisplayMode } from "@microsoft/sp-core-library";
 
-import { IMinWPBannerProps } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup";
+import { IMinWPBannerProps, IWebpartBannerProps, IBuildBannerSettings, IRepoLinks, IFPSUser } from "../fpsReferences";
 
-import { IWebpartBannerProps } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/bannerProps';
-
-import { IBuildBannerSettings , buildBannerProps, } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerSetup';
-import { IRepoLinks } from "@mikezimm/npmfunctions/dist/Links/CreateLinks";
-
-import * as links from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
-
-import { verifyAudienceVsUser } from '@mikezimm/npmfunctions/dist/Services/Users/CheckPermissions';
-
-import { visitorPanelInfo } from '@mikezimm/npmfunctions/dist/CoreFPS/VisitorPanelComponent';
-
-import { IFPSUser } from "@mikezimm/npmfunctions/dist/Services/Users/IUserInterfaces";
-import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { buildBannerProps, visitorPanelInfo, verifyAudienceVsUser } from '../fpsReferences';
 
 export function mainWebPartRenderBannerSetup( 
     displayMode:DisplayMode, beAReader: boolean, FPSUser: IFPSUser, panelTitle: string,
-    thisProps: IMinWPBannerProps, repoLink: IRepoLinks, exportProps: IBuildBannerSettings, strings: any,
+    thisProps: IMinWPBannerProps, repoLink: IRepoLinks, trickyEmails: string[], exportProps: IBuildBannerSettings, strings: any,
     clientWidth: number,
     thisContext: WebPartContext,
     modifyBannerTitle: boolean, forceBanner: boolean,
@@ -96,7 +86,7 @@ export function mainWebPartRenderBannerSetup(
     // console.log('mainWebPart: showTricks ~ 322',   );
     // Verify if this is a duplicate of the code in FPSUser (copied and commented out below )
     let showTricks: any = false;
-    links.trickyEmails.map( getsTricks => {
+    trickyEmails.map( getsTricks => {
       if ( thisContext.pageContext.user && thisContext.pageContext.user.loginName && thisContext.pageContext.user.loginName.toLowerCase().indexOf( getsTricks ) > -1 ) { 
         showTricks = true ;
         thisProps.showRepoLinks = true; //Always show these users repo links

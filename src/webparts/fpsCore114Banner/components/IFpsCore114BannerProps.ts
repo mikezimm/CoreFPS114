@@ -1,4 +1,4 @@
-import { IFPSCorePinMeReactComponentProps, IFPSCorePinMeReactComponentState } from '@mikezimm/npmfunctions/dist/CoreFPS/ReactComponentProps';
+import { IFPSCorePinMeReactComponentProps, IFPSCorePinMeReactComponentState } from '../fpsReferences';
 
 
 /**
