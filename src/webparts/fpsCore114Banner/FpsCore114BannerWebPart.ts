@@ -241,7 +241,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
     });
   }
 
-  public render(): void {
+
 
 
 
@@ -255,6 +255,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
    *                                                                                                  
    *           Source:   PivotTiles 1.5.2.6                                                                                
    */
+
+   public render(): void {
+
    renderCustomStyles( this as any, this.domElement, this.properties, false );
 
    const exportProps = buildExportProps( this.properties , this.wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
@@ -341,6 +344,28 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   }
 
 
+  /***
+ *    d8888b. d88888b       .d8b.       db    db .d8888. d88888b d8888b. 
+ *    88  `8D 88'          d8' `8b      88    88 88'  YP 88'     88  `8D 
+ *    88oooY' 88ooooo      88ooo88      88    88 `8bo.   88ooooo 88oobY' 
+ *    88~~~b. 88~~~~~      88~~~88      88    88   `Y8b. 88~~~~~ 88`8b   
+ *    88   8D 88.          88   88      88b  d88 db   8D 88.     88 `88. 
+ *    Y8888P' Y88888P      YP   YP      ~Y8888P' `8888Y' Y88888P 88   YD 
+ *                                                                       
+ *                                                                       
+ */
+
+  // private beAUserFunction() {
+  //   console.log('beAUserFunction:',   );
+  //   if ( this.displayMode === DisplayMode.Edit ) {
+  //     alert("'Be a regular user' mode is only available while viewing the page.  \n\nOnce you are out of Edit mode, please refresh the page (CTRL-F5) to reload the web part.");
+
+  //   } else {
+  //     this.beAReader = this.beAReader === true ? false : true;
+  //     this.render();
+  //   }
+
+  // }
   
   /***
  *    d8888b. d8888b.  .d88b.  d8888b.      d8888b.  .d8b.  d8b   db d88888b       .o88b. db   db  .d8b.  d8b   db  d888b  d88888b 
