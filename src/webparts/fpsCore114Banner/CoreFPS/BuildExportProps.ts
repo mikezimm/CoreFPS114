@@ -54,6 +54,18 @@ import { changePinMe,  } from '../fpsReferences';
 
 import { importBlockProps } from '../IFpsCore114BannerWebPartProps';
 
+/***
+ *    d88888b db    db d8888b.  .d88b.  d8888b. d888888b      d8888b. d8888b.  .d88b.  d8888b. .d8888. 
+ *    88'     `8b  d8' 88  `8D .8P  Y8. 88  `8D `~~88~~'      88  `8D 88  `8D .8P  Y8. 88  `8D 88'  YP 
+ *    88ooooo  `8bd8'  88oodD' 88    88 88oobY'    88         88oodD' 88oobY' 88    88 88oodD' `8bo.   
+ *    88~~~~~  .dPYb.  88~~~   88    88 88`8b      88         88~~~   88`8b   88    88 88~~~     `Y8b. 
+ *    88.     .8P  Y8. 88      `8b  d8' 88 `88.    88         88      88 `88. `8b  d8' 88      db   8D 
+ *    Y88888P YP    YP 88       `Y88P'  88   YD    YP         88      88   YD  `Y88P'  88      `8888Y' 
+ *                                                                                                     
+ *                                                                                                     
+ */
+
+
 /**
  * buildExportProps builds up an object of specific webpart properties that can be exported via the help panel
  * @returns exportObject
