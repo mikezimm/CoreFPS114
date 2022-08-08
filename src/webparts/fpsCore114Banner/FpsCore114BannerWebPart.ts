@@ -182,18 +182,18 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
   //Common FPS variables
 
-  private sitePresets : ISitePreConfigProps = null;
-  private trickyApp = 'FPS Core114';
-  private wpInstanceID: any = webpartInstance( this.trickyApp );
-  private FPSUser: IFPSUser = null;
+  private _sitePresets : ISitePreConfigProps = null;
+  private _trickyApp = 'FPS Core114';
+  private _wpInstanceID: any = webpartInstance( this._trickyApp );
+  private _FPSUser: IFPSUser = null;
 
   //For FPS Banner
-  private forceBanner = true ;
-  private modifyBannerTitle = true ;
-  private modifyBannerStyle = true ;
+  private _forceBanner = true ;
+  private _modifyBannerTitle = true ;
+  private _modifyBannerStyle = true ;
 
-  private exitPropPaneChanged = false;
-  private importErrorMessage = '';
+  private _exitPropPaneChanged = false;
+  private _importErrorMessage = '';
     
   // private performance : ILoadPerformanceALVFM = null;
   // private bannerProps: IWebpartBannerProps = null;
@@ -201,7 +201,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   // private urlParameters: any = {};
 
   //2022-04-07:  Intent of this is a one-time per instance to 'become a reader' level user.  aka, hide banner buttons that reader won't see
-  private beAReader: boolean = false; 
+  private _beAReader: boolean = false; 
 
 
   protected onInit(): Promise<void> {
@@ -221,14 +221,14 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
      */
 
       //NEED TO APPLY THIS HERE as well as follow-up in render for it to not visibly change
-      this.sitePresets = applyPresetCollectionDefaults( this.sitePresets, PreConfiguredProps, this.properties, this.context.pageContext.web.serverRelativeUrl ) ;
+      this._sitePresets = applyPresetCollectionDefaults( this._sitePresets, PreConfiguredProps, this.properties, this.context.pageContext.web.serverRelativeUrl ) ;
 
       //This indicates if its SPA, Teams etc.... always keep.
       this.properties.pageLayout =  this.context['_pageLayoutType']?this.context['_pageLayoutType'] : this.context['_pageLayoutType'];
       // this.urlParameters = getUrlVars();
 
-      this.FPSUser = getFPSUser( this.context as any, trickyEmails, this.trickyApp ) ;
-      console.log( 'FPSUser: ', this.FPSUser );
+      this._FPSUser = getFPSUser( this.context as any, trickyEmails, this._trickyApp ) ;
+      console.log( 'FPSUser: ', this._FPSUser );
 
       expandoOnInit( this.properties, this.context.domElement, this.displayMode );
 
@@ -260,11 +260,11 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    renderCustomStyles( this as any, this.domElement, this.properties, false );
 
-   const exportProps = buildExportProps( this.properties , this.wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
+   const exportProps = buildExportProps( this.properties , this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
 
-   const bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this.beAReader, this.FPSUser, repoLink.desc, 
-       this.properties, repoLink, trickyEmails, exportProps, strings , this.domElement.clientWidth, this.context, this.modifyBannerTitle, 
-       this.forceBanner, this.properties.enableExpandoramic );
+   const bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this._beAReader, this._FPSUser, repoLink.desc, 
+       this.properties, repoLink, trickyEmails, exportProps, strings , this.domElement.clientWidth, this.context, this._modifyBannerTitle, 
+       this._forceBanner, this.properties.enableExpandoramic );
 
     const element: React.ReactElement<IFpsCore114BannerProps> = React.createElement(
       FpsCore114Banner,
@@ -289,14 +289,14 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
         displayMode: this.displayMode,
 
         // saveLoadAnalytics: this.saveLoadAnalytics.bind(this),
-        FPSPropsObj: buildFPSAnalyticsProps( this.properties, this.wpInstanceID, this.context.pageContext.web.serverRelativeUrl ),
+        FPSPropsObj: buildFPSAnalyticsProps( this.properties, this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl ),
 
         //Banner related props
         errMessage: 'any',
         bannerProps: bannerProps,
         webpartHistory: this.properties.webpartHistory,
 
-        sitePresets: this.sitePresets,
+        sitePresets: this._sitePresets,
 
         fpsPinMenu: {
           defPinState: this.properties.defPinState,
@@ -361,7 +361,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   //     alert("'Be a regular user' mode is only available while viewing the page.  \n\nOnce you are out of Edit mode, please refresh the page (CTRL-F5) to reload the web part.");
 
   //   } else {
-  //     this.beAReader = this.beAReader === true ? false : true;
+  //     this._beAReader = this._beAReader === true ? false : true;
   //     this.render();
   //   }
 
@@ -393,10 +393,10 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   
       if ( propertyPath === 'fpsImportProps' ) {
   
-        this.importErrorMessage = updateFpsImportProps( this.properties, importBlockProps, propertyPath, newValue,
+        this._importErrorMessage = updateFpsImportProps( this.properties, importBlockProps, propertyPath, newValue,
           this.context.propertyPane.refresh,
           this.onPropertyPaneConfigurationStart,
-          this.exitPropPaneChanged,
+          this._exitPropPaneChanged,
         );
   
        } else if ( propertyPath === 'bannerStyle' || propertyPath === 'bannerCmdStyle' )  {
@@ -438,9 +438,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
             FPSPinMePropsGroup, //End this group  
 
             FPSBanner3VisHelpGroup( this.context, this.onPropertyPaneFieldChanged, this.properties ),
-            FPSBanner3BasicGroup( this.forceBanner , this.modifyBannerTitle, this.properties.showBanner, this.properties.infoElementChoice === 'Text' ? true : false, true ),
+            FPSBanner3BasicGroup( this._forceBanner , this._modifyBannerTitle, this.properties.showBanner, this.properties.infoElementChoice === 'Text' ? true : false, true ),
             FPSBanner3NavGroup(),
-            FPSBanner3ThemeGroup( this.modifyBannerStyle, this.properties.showBanner, this.properties.lockStyles, ),
+            FPSBanner3ThemeGroup( this._modifyBannerStyle, this.properties.showBanner, this.properties.lockStyles, ),
             FPSOptionsGroupBasic( false, true, true, true, this.properties.allSectionMaxWidthEnable, true, this.properties.allSectionMarginEnable, true ), // this group
             FPSOptionsExpando( this.properties.enableExpandoramic, this.properties.enableExpandoramic,null, null ),
   
