@@ -1,8 +1,31 @@
 
 import { DisplayMode, } from '@microsoft/sp-core-library';
 
+/***
+ *    d88888b d8888b. .d8888.      d8888b. d8888b. d88888b .d8888. d88888b d888888b .d8888. 
+ *    88'     88  `8D 88'  YP      88  `8D 88  `8D 88'     88'  YP 88'     `~~88~~' 88'  YP 
+ *    88ooo   88oodD' `8bo.        88oodD' 88oobY' 88ooooo `8bo.   88ooooo    88    `8bo.   
+ *    88~~~   88~~~     `Y8b.      88~~~   88`8b   88~~~~~   `Y8b. 88~~~~~    88      `Y8b. 
+ *    88      88      db   8D      88      88 `88. 88.     db   8D 88.        88    db   8D 
+ *    YP      88      `8888Y'      88      88   YD Y88888P `8888Y' Y88888P    YP    `8888Y' 
+ *                                                                                          
+ *                                                                                          
+ */
+
 import { IFpsCore114BannerProps } from '../components/IFpsCore114BannerProps';
 import { saveAnalytics3, IZLoadAnalytics, IZSentAnalytics, } from '../fpsReferences';
+
+
+/***
+ *    db       .d88b.   .o88b.  .d8b.  db      
+ *    88      .8P  Y8. d8P  Y8 d8' `8b 88      
+ *    88      88    88 8P      88ooo88 88      
+ *    88      88    88 8b      88~~~88 88      
+ *    88booo. `8b  d8' Y8b  d8 88   88 88booo. 
+ *    Y88888P  `Y88P'   `Y88P' YP   YP Y88888P 
+ *                                             
+ *                                             
+ */
 
 export const analyticsList: string = "FPSPageInfoViews";
 export const analyticsWeb: string = "/sites/Templates/Analytics/";
