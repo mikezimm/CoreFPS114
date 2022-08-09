@@ -239,7 +239,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
       renderCustomStyles( 
         { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
           displayMode: this.displayMode,
-          doHeadings: false } );
+          doHeadings: false } ); //doHeadings is currently only used in PageInfo so set to false.
     });
   }
 
@@ -262,7 +262,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    renderCustomStyles(  { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
     displayMode: this.displayMode,
-    doHeadings: true } );
+    doHeadings: false } );  //doHeadings is currently only used in PageInfo so set to false.
 
    const exportProps = buildExportProps( this.properties , this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
 
