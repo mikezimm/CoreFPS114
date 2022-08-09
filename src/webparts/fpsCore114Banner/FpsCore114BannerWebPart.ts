@@ -236,8 +236,10 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
  
       this.properties.webpartHistory = getWebPartHistoryOnInit( this.context.pageContext.user.displayName, this.properties.webpartHistory );
 
-      renderCustomStyles( this as any, this.domElement, this.properties, false );
-
+      renderCustomStyles( 
+        { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
+          displayMode: this.displayMode,
+          doHeadings: false } );
     });
   }
 
@@ -258,7 +260,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    public render(): void {
 
-   renderCustomStyles( this as any, this.domElement, this.properties, false );
+   renderCustomStyles(  { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
+    displayMode: this.displayMode,
+    doHeadings: false } );
 
    const exportProps = buildExportProps( this.properties , this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
 
