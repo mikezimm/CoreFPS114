@@ -262,7 +262,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    renderCustomStyles(  { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
     displayMode: this.displayMode,
-    doHeadings: false } );
+    doHeadings: true } );
 
    const exportProps = buildExportProps( this.properties , this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
 
