@@ -179,6 +179,12 @@ export { verifyAudienceVsUser } from '@mikezimm/npmfunctions/dist/Services/Users
 
 export { visitorPanelInfo } from '@mikezimm/npmfunctions/dist/CoreFPS/VisitorPanelComponent';
 
+// instead of createBasePerformanceInit, you can use startPerformanceInit_SS7 for SecureScript or startPerformanceInit_ALVFM for ALVFM
+export { createBasePerformanceInit, startPerformOp, updatePerformanceEnd } from '@mikezimm/npmfunctions/dist/Performance/functions';
+// Baseline:  ILoadPerformance, or for apps:  ILoadPerformanceALVFM | ILoadPerformanceSS7
+export { IPerformanceOp, ILoadPerformance, IHistoryPerformance } from '@mikezimm/npmfunctions/dist/Performance/IPerformance';
+
+export { createPerformanceTableVisitor } from '@mikezimm/npmfunctions/dist/Performance/tables';
 
 // from src\webparts\fpsCore115Banner\CoreFPS\PropPaneHelp.tsx
 
