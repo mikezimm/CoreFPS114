@@ -242,7 +242,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
       expandoOnInit( this.properties, this.context.domElement, this.displayMode );
 
-      updateBannerThemeStyles( this.properties, this.properties.bannerStyleChoice ? this.properties.bannerStyleChoice : 'corpDark1', true, this.properties.defPinState );
+      updateBannerThemeStyles( this.properties, this.properties.bannerStyleChoice ? this.properties.bannerStyleChoice : 'corpDark1', true, this.properties.defPinState, this._sitePresets.forces );
  
       this.properties.webpartHistory = getWebPartHistoryOnInit( this.context.pageContext.user.displayName, this.properties.webpartHistory );
 
@@ -429,7 +429,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
       } else if (propertyPath === 'bannerStyleChoice')  {
         // bannerThemes, bannerThemeKeys, makeCSSPropPaneString
   
-        updateBannerThemeStyles( this.properties , newValue, true, this.properties.defPinState );
+        updateBannerThemeStyles( this.properties , newValue, true, this.properties.defPinState, this._sitePresets.forces );
   
         if ( newValue === 'custom' || newValue === 'lock' ) {
           //Do nothing for these cases.
