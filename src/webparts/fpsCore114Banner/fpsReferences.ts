@@ -28,6 +28,36 @@
 // export { saveViewAnalytics } from './CoreFPS/Analytics';
 
 /***
+ *    db    db d888888b d888888b db      d888888b d888888b d888888b d88888b .d8888. 
+ *    88    88 `~~88~~'   `88'   88        `88'   `~~88~~'   `88'   88'     88'  YP 
+ *    88    88    88       88    88         88       88       88    88ooooo `8bo.   
+ *    88    88    88       88    88         88       88       88    88~~~~~   `Y8b. 
+ *    88b  d88    88      .88.   88booo.   .88.      88      .88.   88.     db   8D 
+ *    ~Y8888P'    YP    Y888888P Y88888P Y888888P    YP    Y888888P Y88888P `8888Y' 
+ *                                                                                  
+ *                                                                                  
+ */
+
+ export { sortStringArray, sortObjectArrayByStringKey, sortNumberArray, sortObjectArrayByNumberKey, sortKeysByOtherKey } from '@mikezimm/npmfunctions/dist/Services/Arrays/sorting';
+ export { ISeriesSort, } from '@mikezimm/npmfunctions/dist/CSSCharts/ICSSCharts';
+ export { getExpandColumns, getKeysLike, getSelectColumns } from '@mikezimm/npmfunctions/dist/Lists/getFunctions';
+ 
+ 
+ 
+ /***
+  *    d8888b. d88888b d8888b. d88888b  .d88b.  d8888b. .88b  d88.  .d8b.  d8b   db  .o88b. d88888b 
+  *    88  `8D 88'     88  `8D 88'     .8P  Y8. 88  `8D 88'YbdP`88 d8' `8b 888o  88 d8P  Y8 88'     
+  *    88oodD' 88ooooo 88oobY' 88ooo   88    88 88oobY' 88  88  88 88ooo88 88V8o 88 8P      88ooooo 
+  *    88~~~   88~~~~~ 88`8b   88~~~   88    88 88`8b   88  88  88 88~~~88 88 V8o88 8b      88~~~~~ 
+  *    88      88.     88 `88. 88      `8b  d8' 88 `88. 88  88  88 88   88 88  V888 Y8b  d8 88.     
+  *    88      Y88888P 88   YD YP       `Y88P'  88   YD YP  YP  YP YP   YP VP   V8P  `Y88P' Y88888P 
+  *                                                                                                 
+  *                                                                                                 
+  */
+ 
+  export { ILoadPerformance } from "@mikezimm/npmfunctions/dist/Performance/IPerformance";
+
+/***
  *    d88888b d8888b. .d8888.      d8888b. d8888b. d88888b .d8888. d88888b d888888b .d8888. 
  *    88'     88  `8D 88'  YP      88  `8D 88  `8D 88'     88'  YP 88'     `~~88~~' 88'  YP 
  *    88ooo   88oodD' `8bo.        88oodD' 88oobY' 88ooooo `8bo.   88ooooo    88    `8bo.   
