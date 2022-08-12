@@ -5,6 +5,7 @@ import { DisplayMode } from "@microsoft/sp-core-library";
 import { IMinWPBannerProps, IWebpartBannerProps, IBuildBannerSettings, IRepoLinks, IFPSUser } from "../fpsReferences";
 
 import { buildBannerProps, visitorPanelInfo, verifyAudienceVsUser } from '../fpsReferences';
+import { ILoadPerformance } from "../fpsReferences";
 
 export function mainWebPartRenderBannerSetup( 
     displayMode:DisplayMode, beAReader: boolean, FPSUser: IFPSUser, panelTitle: string,
@@ -12,8 +13,8 @@ export function mainWebPartRenderBannerSetup(
     clientWidth: number,
     thisContext: WebPartContext,
     modifyBannerTitle: boolean, forceBanner: boolean,
-    enableExpandoramic: boolean
-
+    enableExpandoramic: boolean,
+    performance: ILoadPerformance,
     ) {
 
     // expandoErrorObj has not yet been set up properly in this function since FPSPageInfo did not use it.
@@ -105,7 +106,7 @@ export function mainWebPartRenderBannerSetup(
 
     thisProps.showBannerGear = verifyAudienceVsUser( FPSUser , showTricks, thisProps.homeParentGearAudience, null, renderAsReader );
 
-    const bannerSetup = buildBannerProps( thisProps , FPSUser, buildBannerSettings, showTricks, renderAsReader, displayMode );
+    const bannerSetup = buildBannerProps( thisProps , FPSUser, buildBannerSettings, showTricks, displayMode );
     if ( !thisProps.bannerTitle || thisProps.bannerTitle === '' ) { 
       if ( thisProps.defPinState !== 'normal' ) {
         bannerSetup.bannerProps.title = strings.bannerTitle ;

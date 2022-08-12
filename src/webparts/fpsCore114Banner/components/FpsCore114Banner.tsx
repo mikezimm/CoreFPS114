@@ -95,6 +95,10 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
     const Banner = <FetchBanner 
       parentProps={ this.props }
       parentState={ this.state }
+      
+      nearBannerElementsArray={ [] }
+      farBannerElementsArray={ [] }
+      
       updatePinState = { this._updatePinState.bind(this) }
       pinState = { this.state.pinState }
     />;

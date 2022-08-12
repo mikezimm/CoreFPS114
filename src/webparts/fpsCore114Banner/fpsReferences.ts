@@ -55,7 +55,10 @@
   *                                                                                                 
   */
  
-  export { ILoadPerformance } from "@mikezimm/npmfunctions/dist/Performance/IPerformance";
+// instead of createBasePerformanceInit, you can use startPerformanceInit_SS7 for SecureScript or startPerformanceInit_ALVFM for ALVFM
+export { createBasePerformanceInit, startPerformOp, updatePerformanceEnd } from '@mikezimm/npmfunctions/dist/Performance/functions';
+export { IPerformanceOp, ILoadPerformance, IHistoryPerformance } from '@mikezimm/npmfunctions/dist/Performance/IPerformance';
+export { createPerformanceTableVisitor } from '@mikezimm/npmfunctions/dist/Performance/tables';
 
 /***
  *    d88888b d8888b. .d8888.      d8888b. d8888b. d88888b .d8888. d88888b d888888b .d8888. 
@@ -157,7 +160,7 @@ export { IWebpartBannerProps } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/
 
 export { WebPartInfoGroup, } from '@mikezimm/npmfunctions/dist/Services/PropPane/zReusablePropPane';
 export { FPSOptionsGroupBasic, } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
-export { FPSBanner3BasicGroup,FPSBanner3NavGroup, FPSBanner3ThemeGroup } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
+export { FPSBanner4BasicGroup,FPSBanner3NavGroup, FPSBanner3ThemeGroup } from '@mikezimm/npmfunctions/dist/Services/PropPane/FPSOptionsGroup3';
 export { FPSBanner3VisHelpGroup } from '@mikezimm/npmfunctions/dist/CoreFPS/FPSOptionsGroupVisHelp';
 export { FPSPinMePropsGroup } from '@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSOptionsGroupPinMe';
 export { FPSOptionsExpando, } from '@mikezimm/npmfunctions/dist/Services/DOM/Expando/FPSOptionsExpando'; //expandAudienceChoicesAll
@@ -208,13 +211,6 @@ export { IBuildBannerSettings , buildBannerProps, } from '@mikezimm/npmfunctions
 export { verifyAudienceVsUser } from '@mikezimm/npmfunctions/dist/Services/Users/CheckPermissions';
 
 export { visitorPanelInfo } from '@mikezimm/npmfunctions/dist/CoreFPS/VisitorPanelComponent';
-
-// instead of createBasePerformanceInit, you can use startPerformanceInit_SS7 for SecureScript or startPerformanceInit_ALVFM for ALVFM
-export { createBasePerformanceInit, startPerformOp, updatePerformanceEnd } from '@mikezimm/npmfunctions/dist/Performance/functions';
-// Baseline:  ILoadPerformance, or for apps:  ILoadPerformanceALVFM | ILoadPerformanceSS7
-export { IPerformanceOp, ILoadPerformance, IHistoryPerformance } from '@mikezimm/npmfunctions/dist/Performance/IPerformance';
-
-export { createPerformanceTableVisitor } from '@mikezimm/npmfunctions/dist/Performance/tables';
 
 // from src\webparts\fpsCore115Banner\CoreFPS\PropPaneHelp.tsx
 

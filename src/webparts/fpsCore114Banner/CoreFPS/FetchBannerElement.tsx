@@ -44,6 +44,9 @@ export interface IFetchBannerProps {
     parentProps:    IFpsCore114BannerProps;
     parentState:    IFpsCore114BannerState;
 
+    nearBannerElementsArray: Element[];
+    farBannerElementsArray: Element[];
+
     updatePinState: any;
     pinState: IPinMeState;
 
@@ -101,7 +104,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
 
   private buildNearBannerElements() {
 
-    const elements = [];
+    const elements: any[] = this.props.nearBannerElementsArray ? this.props.nearBannerElementsArray : [];
     // defaultBannerCommandStyles.fontWeight = 'bolder';
     // elements.push(<div style={{ paddingRight: null }} className={ '' } title={ title}>
     //   <Icon iconName='WindDirection' onClick={ this.jumpToParentSite.bind(this) } style={ defaultBannerCommandStyles }/>
@@ -110,7 +113,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
   }
 
   private buildFarBannerElements() {
-    const farElements: any[] = [];
+    const farElements: any[] = this.props.farBannerElementsArray ? this.props.farBannerElementsArray : [];
 
     if ( this.props.parentProps.bannerProps.showTricks === true ) {
       farElements.push( null );
@@ -178,9 +181,7 @@ export default class FetchBanner extends React.Component<IFetchBannerProps, IFet
     const { displayMode, fpsPinMenu } = this.props.parentProps;
 
    // const farBannerElementsArray = [];
-   const farBannerElementsArray = [...this.farBannerElements,
-    // this.props.showCodeIcon !== true ? null : <div title={'Show Code Details'}><Icon iconName={ 'Code' } onClick={ this.toggleOriginal.bind(this) } style={ bannerProps.bannerCmdReactCSS }/></div>,
-  ];
+   const farBannerElementsArray = this.buildFarBannerElements();
 
   //If there is no updatePinState function, then the web part does not use it so ignore this code.
   if ( this.props.updatePinState ) {
