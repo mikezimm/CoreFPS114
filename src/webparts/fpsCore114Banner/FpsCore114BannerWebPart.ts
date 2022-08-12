@@ -111,10 +111,12 @@ import FpsCore114Banner from './components/FpsCore114Banner';
  import { IWebpartBannerProps, } from './fpsReferences';
  import { buildExportProps, buildFPSAnalyticsProps , } from './CoreFPS/BuildExportProps';
  
- import { mainWebPartRenderBannerSetup } from './CoreFPS/WebPartRenderBanner';
- 
- import { visitorPanelInfo, } from './fpsReferences';
- import { createPerformanceTableVisitor } from './fpsReferences';
+//  import { mainWebPartRenderBannerSetup } from './fpsReferences';
+//  import { mainWebPartRenderBannerSetup } from './CoreFPS/WebPartRenderBanner';
+
+//For whatever reason, THIS NEEDS TO BE CALLED Directly and NOT through fpsReferences or it gives error.
+import { mainWebPartRenderBannerSetup } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/WebPartRenderBannerV2';
+
 
  /***
   *    d8888b. d8888b.  .d88b.  d8888b.       d888b  d8888b.  .d88b.  db    db d8888b. .d8888. 
@@ -276,9 +278,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    const exportProps = buildExportProps( this.properties , this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl );
 
-   const bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this._beAReader, this._FPSUser, repoLink.desc, 
+   const bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this._beAReader, this._FPSUser, //repoLink.desc, 
        this.properties, repoLink, trickyEmails, exportProps, strings , this.domElement.clientWidth, this.context, this._modifyBannerTitle, 
-       this._forceBanner, this.properties.enableExpandoramic, null );
+       this._forceBanner, false, null, true, true );
 
     if ( bannerProps.showBeAUserIcon === true ) { bannerProps.beAUserFunction = this._beAUserFunction.bind(this); }
 

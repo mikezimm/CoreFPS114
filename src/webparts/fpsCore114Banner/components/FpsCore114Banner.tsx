@@ -5,7 +5,12 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 
 import { saveViewAnalytics } from '../CoreFPS/Analytics';
-import FetchBanner from '../CoreFPS/FetchBannerElement';
+// import FetchBanner from '../CoreFPS/FetchBannerElement';
+import FetchBanner from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/FetchBannerElement';
+
+import { getWebPartHelpElement } from '../CoreFPS/PropPaneHelp';
+import { getBannerPages, } from './HelpPanel/AllContent';
+import { IBannerPages } from "../fpsReferences";
 
 //Use this to add more console.logs for this component
 const urlParams : URLSearchParams = new URLSearchParams( window.location.search );
@@ -14,6 +19,8 @@ const consolePrefix: string = 'fpsconsole: FpsCore114Banner';
 
 export default class FpsCore114Banner extends React.Component<IFpsCore114BannerProps, IFpsCore114BannerState > {
 
+  private _webPartHelpElement = getWebPartHelpElement( this.props.sitePresets );
+  private _contentPages : IBannerPages = getBannerPages( this.props.bannerProps );
 
   private _updatePinState( newValue ) {
       this.setState({ pinState: newValue, });
@@ -71,13 +78,14 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
   public componentDidUpdate(prevProps){
 
     if ( fpsconsole === true ) console.log( `${consolePrefix} ~ componentDidUpdate` );
-    // let pinStatus = getDefaultFPSPinState ( prevProps.fpsPinMenu, this.props.fpsPinMenu, this.props.displayMode );
 
-    // if ( pinStatus.refresh === true ) {
-    //   FPSPinMe( this.props.fpsPinMenu.domElement, pinStatus.defPinState, null,  false, true, null, this.props.fpsPinMenu.pageLayout, this.props.displayMode );
-    //   this.setState({ pinState: pinStatus.defPinState });
-    // }
-    // this.setState({ pinState: this.state.pinState });
+    const refresh = this.props.displayMode !== prevProps.displayMode ? true : false;
+
+    if ( refresh === true ) {
+      this._webPartHelpElement = getWebPartHelpElement( this.props.sitePresets );
+      this._contentPages = getBannerPages( this.props.bannerProps );
+    }
+
   }
 
 
@@ -98,6 +106,9 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       
       nearBannerElementsArray={ [] }
       farBannerElementsArray={ [] }
+
+      contentPages={ this._contentPages }
+      WebPartHelpElement={ this._webPartHelpElement }
       
       updatePinState = { this._updatePinState.bind(this) }
       pinState = { this.state.pinState }
