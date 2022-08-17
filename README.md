@@ -21,5 +21,5 @@ npm install @mikezimm/npmfunctions@2.0.1   -----> version at time of creating pr
 npm install @pnp/spfx-property-controls --save --save-exact   ----->  "@pnp/spfx-property-controls": "3.8.0",
 ```
 
-npm install webpack-bundle-analyzer --save-dev
+npm install webpack-bundle-analyzer@3.9.0 --save-dev
 After installing webpack analyzer, be sure to update the gulpfile.js so it actually builds the map.
