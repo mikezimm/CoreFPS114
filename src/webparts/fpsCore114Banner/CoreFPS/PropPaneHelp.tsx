@@ -24,7 +24,7 @@ import { repoLink } from '../fpsReferences';
 
 import { ISitePreConfigProps, SitePresetsInfo } from '../fpsReferences';
 
-require('@mikezimm/npmfunctions/dist/PropPaneHelp/PropPanelHelp.css');
+// require('@mikezimm/npmfunctions/dist/PropPaneHelp/PropPanelHelp.css');
 
 /***
  *    db       .d88b.   .o88b.  .d8b.  db      

@@ -130,7 +130,7 @@ export { updateBannerThemeStyles } from '@mikezimm/npmfunctions/dist/WebPartFunc
  *     USED FOR WEB PART HISTORY
  */
 
-export { updateWebpartHistoryV2,  } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/Functions';
+export { updateWebpartHistoryV2, ITrimThis } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/Functions';
 export { getWebPartHistoryOnInit } from '@mikezimm/npmfunctions/dist/Services/PropPane/WebPartHistory/OnInit';
 
 

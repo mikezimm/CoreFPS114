@@ -176,10 +176,6 @@ import { mainWebPartRenderBannerSetup, refreshPanelHTML } from '@mikezimm/npmfun
  
 
 require('@mikezimm/npmfunctions/dist/Services/PropPane/GrayPropPaneAccordions.css');
-require('@mikezimm/npmfunctions/dist/Services/DOM/PinMe/FPSPinMe.css');
-require('@mikezimm/npmfunctions/dist/HeadingCSS/FPSHeadings.css');
-require('@mikezimm/npmfunctions/dist/PropPaneHelp/PropPanelHelp.css');
-
 
 
 export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsCore114BannerWebPartProps> {
@@ -202,7 +198,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   private _exitPropPaneChanged = false;
   private _importErrorMessage = '';
   
-  private _keysToShow : string[] = [ 'fetch', 'analyze', ];
+  private _keysToShow : string[] = [ 'fetch', 'analyze', 'renderWebPartStart' ];
   private _performance : ILoadPerformance = null;
   // private bannerProps: IWebpartBannerProps = null;
 
