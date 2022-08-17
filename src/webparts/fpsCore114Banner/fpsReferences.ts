@@ -40,7 +40,7 @@
 
  export { sortStringArray, sortObjectArrayByStringKey, sortNumberArray, sortObjectArrayByNumberKey, sortKeysByOtherKey } from '@mikezimm/npmfunctions/dist/Services/Arrays/sorting';
  export { ISeriesSort, } from '@mikezimm/npmfunctions/dist/CSSCharts/ICSSCharts';
- export { getExpandColumns, getKeysLike, getSelectColumns } from '@mikezimm/npmfunctions/dist/Lists/getFunctions';
+ export { getExpandColumns, getKeysLike, getSelectColumns } from '@mikezimm/npmfunctions/dist/Lists/getV1/getFunctions';
  
  
  
@@ -59,6 +59,7 @@
 export { createBasePerformanceInit, startPerformOp, updatePerformanceEnd } from '@mikezimm/npmfunctions/dist/Performance/functions';
 export { IPerformanceOp, ILoadPerformance, IHistoryPerformance } from '@mikezimm/npmfunctions/dist/Performance/IPerformance';
 export { createPerformanceTableVisitor } from '@mikezimm/npmfunctions/dist/Performance/tables';
+
 
 /***
  *    d88888b d8888b. .d8888.      d8888b. d8888b. d88888b .d8888. d88888b d888888b .d8888. 
@@ -209,8 +210,6 @@ export { IMinWPBannerProps } from "@mikezimm/npmfunctions/dist/HelpPanelOnNPM/on
 export { IBuildBannerSettings , } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/BannerInterface';
 
 export { verifyAudienceVsUser } from '@mikezimm/npmfunctions/dist/Services/Users/CheckPermissions';
-
-export { visitorPanelInfo } from '@mikezimm/npmfunctions/dist/CoreFPS/VisitorPanelComponent';
 
 // from src\webparts\fpsCore115Banner\CoreFPS\PropPaneHelp.tsx
 

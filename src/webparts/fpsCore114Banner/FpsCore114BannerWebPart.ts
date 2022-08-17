@@ -115,7 +115,7 @@ import FpsCore114Banner from './components/FpsCore114Banner';
 //  import { mainWebPartRenderBannerSetup } from './CoreFPS/WebPartRenderBanner';
 
 //For whatever reason, THIS NEEDS TO BE CALLED Directly and NOT through fpsReferences or it gives error.
-import { mainWebPartRenderBannerSetup } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/WebPartRenderBannerV2';
+import { mainWebPartRenderBannerSetup, refreshPanelHTML } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/WebPartRenderBannerV2';
 
 
  /***
@@ -201,7 +201,8 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
   private _exitPropPaneChanged = false;
   private _importErrorMessage = '';
-    
+  
+  private _keysToShow : string[] = [ 'fetch', 'analyze', ];
   private _performance : ILoadPerformance = null;
   // private bannerProps: IWebpartBannerProps = null;
 
@@ -272,6 +273,12 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    public render(): void {
 
+  /**
+   * PERFORMANCE - START
+   * This is how you can start a performance snapshot - make the _performance.KEYHERE = startPerforOp('KEYHERE', this.displayMode)
+   */ 
+   this._performance.renderWebPartStart = startPerformOp( 'renderWebPartStart', this.displayMode );
+
    renderCustomStyles(  { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
     displayMode: this.displayMode,
     doHeadings: false } );  //doHeadings is currently only used in PageInfo so set to false.
@@ -280,16 +287,21 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
    const bannerProps: IWebpartBannerProps = mainWebPartRenderBannerSetup( this.displayMode, this._beAReader, this._FPSUser, //repoLink.desc, 
        this.properties, repoLink, trickyEmails, exportProps, strings , this.domElement.clientWidth, this.context, this._modifyBannerTitle, 
-       this._forceBanner, false, null, true, true );
+       this._forceBanner, false, null,this._keysToShow, true, true );
 
     if ( bannerProps.showBeAUserIcon === true ) { bannerProps.beAUserFunction = this._beAUserFunction.bind(this); }
 
-    // console.log('mainWebPart: baseFetchInfo ~ 308',   );
-    // this._fetchInfo = baseFetchInfo( '', this._performance );
+
+  /**
+   * PERFORMANCE - UPDATE
+   * This is how you can UPDATE a performance snapshot - make the _performance.KEYHERE = startPerforOp('KEYHERE', this.displayMode)
+   * NOTE IN THIS CASE to do it before you refreshPanelHTML :)
+   */
+
+    this._performance.renderWebPartStart = updatePerformanceEnd( this._performance.renderWebPartStart, true );
 
     // This gets done a second time if you do not want to pass it in the first time.
-    // bannerProps.replacePanelHTML = visitorPanelInfo( this.properties, repoLink, '', '', createPerformanceTableVisitor( this._fetchInfo.performance ) );
-    console.log('mainWebPart: createElement ~ 316',   );
+    bannerProps.replacePanelHTML = refreshPanelHTML( bannerProps as any, repoLink, this._performance, this._keysToShow );   console.log('mainWebPart: createElement ~ 316',   );
 
     const element: React.ReactElement<IFpsCore114BannerProps> = React.createElement(
       FpsCore114Banner,
