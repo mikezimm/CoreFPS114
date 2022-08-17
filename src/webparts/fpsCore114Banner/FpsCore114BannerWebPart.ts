@@ -68,7 +68,7 @@ import FpsCore114Banner from './components/FpsCore114Banner';
  
  import { webpartInstance, IFPSUser, getFPSUser, repoLink, trickyEmails } from './fpsReferences';
  import { createBasePerformanceInit, startPerformOp, updatePerformanceEnd } from './fpsReferences';
- import { IPerformanceOp, ILoadPerformance, IHistoryPerformance } from './fpsReferences';
+ import { IPerformanceOp, ILoadPerformance, IHistoryPerformance, ILoadPerformanceOps } from './fpsReferences';
  
  /***
   *    .d8888. d888888b db    db db      d88888b .d8888. 
@@ -198,7 +198,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   private _exitPropPaneChanged = false;
   private _importErrorMessage = '';
   
-  private _keysToShow : string[] = [ 'fetch', 'analyze', 'renderWebPartStart' ];
+  private _keysToShow : ILoadPerformanceOps[] = [ ];
   private _performance : ILoadPerformance = null;
   // private bannerProps: IWebpartBannerProps = null;
 
