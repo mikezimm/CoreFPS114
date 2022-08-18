@@ -117,7 +117,6 @@ import FpsCore114Banner from './components/FpsCore114Banner';
 //For whatever reason, THIS NEEDS TO BE CALLED Directly and NOT through fpsReferences or it gives error.
 import { mainWebPartRenderBannerSetup, refreshPanelHTML } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/WebPartRenderBannerV2';
 
-
  /***
   *    d8888b. d8888b.  .d88b.  d8888b.       d888b  d8888b.  .d88b.  db    db d8888b. .d8888. 
   *    88  `8D 88  `8D .8P  Y8. 88  `8D      88' Y8b 88  `8D .8P  Y8. 88    88 88  `8D 88'  YP 
@@ -207,7 +206,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
   //2022-04-07:  Intent of this is a one-time per instance to 'become a reader' level user.  aka, hide banner buttons that reader won't see
   private _beAReader: boolean = false; 
 
-  private _fetchInfo: any = null; // Originally IFetchInfo if it has it
+  // private _fetchInfo: any = null; // Originally IFetchInfo if it has it
 
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
@@ -297,6 +296,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
     this._performance.renderWebPartStart = updatePerformanceEnd( this._performance.renderWebPartStart, true );
 
     // This gets done a second time if you do not want to pass it in the first time.
+    //function visitorPanelInfo(wpProps, repoLinks, bodyText, fromText, loadSummary) {
     bannerProps.replacePanelHTML = refreshPanelHTML( bannerProps as any, repoLink, this._performance, this._keysToShow );   console.log('mainWebPart: createElement ~ 316',   );
 
     const element: React.ReactElement<IFpsCore114BannerProps> = React.createElement(
@@ -320,6 +320,8 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
         // pageContext: this.context.pageContext, //This can be found in the bannerProps now
         context: this.context,
         displayMode: this.displayMode,
+
+        performance: this._performance, //Alternatively, use this if available (like ALVFM): _fetchInfo.performance,
 
         // saveLoadAnalytics: this.saveLoadAnalytics.bind(this),
         FPSPropsObj: buildFPSAnalyticsProps( this.properties, this._wpInstanceID, this.context.pageContext.web.serverRelativeUrl ),

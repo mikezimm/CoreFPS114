@@ -211,6 +211,8 @@ export { IBuildBannerSettings , } from '@mikezimm/npmfunctions/dist/HelpPanelOnN
 
 export { verifyAudienceVsUser } from '@mikezimm/npmfunctions/dist/Services/Users/CheckPermissions';
 
+export { visitorPanelInfo } from '@mikezimm/npmfunctions/dist/CoreFPS/VisitorPanelComponent';
+
 // from src\webparts\fpsCore115Banner\CoreFPS\PropPaneHelp.tsx
 
 export { gitRepoALVFinManSmall } from '@mikezimm/npmfunctions/dist/Links/LinksRepos';
