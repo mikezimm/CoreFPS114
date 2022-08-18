@@ -117,6 +117,8 @@ import FpsCore114Banner from './components/FpsCore114Banner';
 //For whatever reason, THIS NEEDS TO BE CALLED Directly and NOT through fpsReferences or it gives error.
 import { mainWebPartRenderBannerSetup, refreshPanelHTML } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/WebPartRenderBannerV2';
 
+import { visitorPanelInfo, } from './fpsReferences';
+import { createPerformanceTableVisitor } from './fpsReferences';
  /***
   *    d8888b. d8888b.  .d88b.  d8888b.       d888b  d8888b.  .d88b.  db    db d8888b. .d8888. 
   *    88  `8D 88  `8D .8P  Y8. 88  `8D      88' Y8b 88  `8D .8P  Y8. 88    88 88  `8D 88'  YP 
@@ -297,7 +299,11 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
     // This gets done a second time if you do not want to pass it in the first time.
     //function visitorPanelInfo(wpProps, repoLinks, bodyText, fromText, loadSummary) {
-    bannerProps.replacePanelHTML = refreshPanelHTML( bannerProps as any, repoLink, this._performance, this._keysToShow );   console.log('mainWebPart: createElement ~ 316',   );
+    // This works
+    // bannerProps.replacePanelHTML = refreshPanelHTML( bannerProps as any, repoLink, this._performance, this._keysToShow );   console.log('mainWebPart: createElement ~ 316',   );
+
+    //This works but only gives renderWebPartStart, not the onInit data
+    // bannerProps.replacePanelHTML = visitorPanelInfo( this.properties, repoLink, '', '', createPerformanceTableVisitor( this._performance, this._keysToShow ) );
 
     const element: React.ReactElement<IFpsCore114BannerProps> = React.createElement(
       FpsCore114Banner,

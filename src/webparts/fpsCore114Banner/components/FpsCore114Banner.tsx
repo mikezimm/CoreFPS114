@@ -30,8 +30,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
   
   private _performance: ILoadPerformance = null;
-  private _replacePanelHTML = null;
-
+  private _bonusHTML: JSX.Element = null;
 
   private _webPartHelpElement = getWebPartHelpElement( this.props.sitePresets );
   private _contentPages : IBannerPages = getBannerPages( this.props.bannerProps );
@@ -78,7 +77,10 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       super(props);
   
       if ( this._performance === null ) { this._performance = this.props.performance;  }
-      this._replacePanelHTML = refreshPanelHTML( this.props.bannerProps as any, repoLink, createPerformanceTableVisitor( this._performance, [] ), [] );
+
+      //Update the _bonusHTML if you want now
+      this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
+      // this._replacePanelHTML = refreshPanelHTML( this.props.bannerProps as any, repoLink, createPerformanceTableVisitor( this._performance, [] ), [] );
   
 
       this.state = {
@@ -96,6 +98,16 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
     public componentDidMount() {
       if ( fpsconsole === true ) console.log( `${consolePrefix} ~ componentDidMount` );
   
+      //Start tracking performance
+      this._performance.fetch1 = startPerformOp( 'fetch1 TitleText', this.props.displayMode );
+      //Do async code here
+
+      //End tracking performance
+      this._performance.fetch1 = updatePerformanceEnd( this._performance.fetch1, true );
+
+      //Update the _bonusHTML if you want now
+      this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
+
       const analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted );
   
       if ( this.state.analyticsWasExecuted !==  analyticsWasExecuted ) {
@@ -139,21 +151,52 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
      *    this._performance.fetch1 = updatePerformanceEnd( <=== ENDS tracking performance
      *    this._replacePanelHTML = refreshPanelHTML( <=== This updates the performance panel content
      */
-    if ( fpsconsole === true ) {
+
+    if ( refresh === true ) {
       //Start tracking performance item
-      this._performance.fetch1 = startPerformOp( 'fetch TitleText', this.props.displayMode );
+      this._performance.fetch2 = startPerformOp( 'fetch2 TitleText', this.props.displayMode );
+
       //Do async code here
 
       //End tracking performance
-      this._performance.fetch1 = updatePerformanceEnd( this._performance.fetch1, true );
+      this._performance.fetch2 = updatePerformanceEnd( this._performance.fetch2, true );
 
-      //Finally update the html for the panel here
-      this._replacePanelHTML = refreshPanelHTML( this.props.bannerProps as any, repoLink, this._performance, [] );
-      // Update state here if needed
-      // this.setState({ 
-      //   refreshId: this.newRefreshId(),
-      // });
+      //Update the _bonusHTML if you want now
+      this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
+
+      if ( fpsconsole === true ) console.log('React componentDidUpdate - this._performance:', JSON.parse(JSON.stringify(this._performance)) );
+
     }
+
+  }
+
+  public async _updatePerformance () {
+
+    /**
+     * This section is needed if you want to track performance in the react component.
+     *    In the case of ALVFM, I do the following:
+     *    this._performance.fetch1 = startPerformOp( <=== Starts tracking perforamnce
+     *    ... Stuff to do
+     *    this._performance.fetch1 = updatePerformanceEnd( <=== ENDS tracking performance
+     *    this._replacePanelHTML = refreshPanelHTML( <=== This updates the performance panel content
+     */
+
+    //Start tracking performance
+    this._performance.fetch3 = startPerformOp( 'fetch3 TitleText', this.props.displayMode );
+    //Do async code here
+
+    //End tracking performance
+    this._performance.fetch3 = updatePerformanceEnd( this._performance.fetch3, true );
+
+    //Update the _bonusHTML if you want now
+    this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
+
+    if ( fpsconsole === true ) console.log('React - _updatePerformance:', JSON.parse(JSON.stringify(this._performance)) );
+
+    //PERFORMANCE COMMENT:  YOU NEED TO UPDATE STATE HERE FOR IT TO REFLECT IN THE BANNER.
+    this.setState({ 
+      refreshId: this.newRefreshId(),
+    });
 
   }
 
@@ -194,12 +237,11 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       }
 
 
+    if ( fpsconsole === true ) console.log('React Render - this._performance:', JSON.parse(JSON.stringify(this._performance)) );
 
     const Banner = <FetchBanner 
 
-      // refreshId={ this.state.refreshId }
-      // replacePanelHTML={ refreshPanelHTML( this.props.bannerProps as any, repoLink, this._performance, [] ) }
-      replacePanelHTML={ this._replacePanelHTML }
+      bonusHTML={ this._bonusHTML }
 
       parentProps={ this.props }
       parentState={ this.state }
@@ -219,7 +261,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
           { devHeader }
           { Banner }
         <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
+          <img onClick={ this._doSomething.bind(this)}alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
           <h2>Well done, {escape(userDisplayName)}!</h2>
           <div>{environmentMessage}</div>
           <div>Web part property value: <strong>{escape(description)}</strong></div>
@@ -242,5 +284,9 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
         </div>
       </section>
     );
+  }
+
+  private _doSomething() {
+    this._updatePerformance();
   }
 }
