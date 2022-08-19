@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './FpsCore114Banner.module.scss';
+
 import { IFpsCore114BannerProps, IFpsCore114BannerState } from './IFpsCore114BannerProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
@@ -11,7 +12,6 @@ import FetchBanner from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/FetchB
 import { getWebPartHelpElement } from '../CoreFPS/PropPaneHelp';
 import { getBannerPages, } from './HelpPanel/AllContent';
 import { IBannerPages } from "../fpsReferences";
-
 
 
 import { createPerformanceTableVisitor, repoLink } from '../fpsReferences';
@@ -26,19 +26,19 @@ const urlParams : URLSearchParams = new URLSearchParams( window.location.search 
 const fpsconsole : boolean = urlParams.get( 'fpsconsole' ) === 'true' ? true : false;
 const consolePrefix: string = 'fpsconsole: FpsCore114Banner';
 
+
 export default class FpsCore114Banner extends React.Component<IFpsCore114BannerProps, IFpsCore114BannerState > {
 
-  
   private _performance: ILoadPerformance = null;
   private _bonusHTML: JSX.Element = null;
 
   private _webPartHelpElement = getWebPartHelpElement( this.props.sitePresets );
   private _contentPages : IBannerPages = getBannerPages( this.props.bannerProps );
 
-  private newRefreshId() {
+  private _newRefreshId() {
 
-    let startTime = new Date();
-    let refreshId = startTime.toISOString().replace('T', ' T'); // + ' ~ ' + startTime.toLocaleTimeString();
+    const startTime = new Date();
+    const refreshId = startTime.toISOString().replace('T', ' T'); // + ' ~ ' + startTime.toLocaleTimeString();
     return refreshId;
 
   }
@@ -47,7 +47,6 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       this.setState({ pinState: newValue, });
   }
 
-  
   /***
  *    d8b   db d88888b  .d8b.  d8888b.      d88888b  .d8b.  d8888b.      d88888b db      d88888b 
  *    888o  88 88'     d8' `8b 88  `8D      88'     d8' `8b 88  `8D      88'     88      88'     
@@ -80,15 +79,13 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
       //Update the _bonusHTML if you want now
       this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
-      // this._replacePanelHTML = refreshPanelHTML( this.props.bannerProps as any, repoLink, createPerformanceTableVisitor( this._performance, [] ), [] );
-  
 
       this.state = {
         pinState: this.props.fpsPinMenu.defPinState ? this.props.fpsPinMenu.defPinState : 'normal',
         showDevHeader: false,
         lastStateChange: '', 
         analyticsWasExecuted: false,
-        refreshId: this.newRefreshId(),
+        refreshId: this._newRefreshId(),
         debugMode: false,
         showSpinner: false,
 
@@ -195,7 +192,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
     //PERFORMANCE COMMENT:  YOU NEED TO UPDATE STATE HERE FOR IT TO REFLECT IN THE BANNER.
     this.setState({ 
-      refreshId: this.newRefreshId(),
+      refreshId: this._newRefreshId(),
     });
 
   }
@@ -225,7 +222,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
       
       // initiate array for adding more buttons here.  If not needed, can be commented out
-      let farBannerElementsArray = [...this._farBannerElements,
+      const farBannerElementsArray = [...this._farBannerElements,
         //  ...[<div title={'Show Code Details'}><Icon iconName={ 'Code' } onClick={ this.toggleDebugMode.bind(this) } style={ bannerProps.bannerCmdReactCSS }></Icon></div>],
       ];
 
@@ -245,15 +242,16 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
       parentProps={ this.props }
       parentState={ this.state }
-      
+
       nearBannerElementsArray={ [] }
       farBannerElementsArray={ farBannerElementsArray }
 
       contentPages={ this._contentPages }
       WebPartHelpElement={ this._webPartHelpElement }
-      
+
       updatePinState = { this._updatePinState.bind(this) }
       pinState = { this.state.pinState }
+      
     />;
 
     return (
@@ -261,7 +259,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
           { devHeader }
           { Banner }
         <div className={styles.welcome}>
-          <img onClick={ this._doSomething.bind(this)}alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
+          <img onClick={ this._doSomething.bind(this)} alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
           <h2>Well done, {escape(userDisplayName)}!</h2>
           <div>{environmentMessage}</div>
           <div>Web part property value: <strong>{escape(description)}</strong></div>
