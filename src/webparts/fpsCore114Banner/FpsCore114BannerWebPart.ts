@@ -226,6 +226,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
      *                                                                                                                         
      */
 
+       this._performance = createBasePerformanceInit( this.displayMode, false );
+       this._performance.superOnInit = startPerformOp( 'superOnInit', this.displayMode );
+
       //NEED TO APPLY THIS HERE as well as follow-up in render for it to not visibly change
       this._sitePresets = applyPresetCollectionDefaults( this._sitePresets, PreConfiguredProps, this.properties, this.context.pageContext.web.serverRelativeUrl ) ;
 
@@ -235,7 +238,6 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
 
             //Added for ALVFinMan
       // DEFAULTS SECTION:  Performance   <<< ================================================================
-      this._performance = createBasePerformanceInit( this.displayMode, false );
 
       this._FPSUser = getFPSUser( this.context as any, trickyEmails, this._trickyApp ) ;
       console.log( 'FPSUser: ', this._FPSUser );
@@ -250,6 +252,9 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
         { wpInstanceID: this._wpInstanceID, domElement: this.domElement, wpProps: this.properties, 
           displayMode: this.displayMode,
           doHeadings: false } ); //doHeadings is currently only used in PageInfo so set to false.
+
+      this._performance.superOnInit = updatePerformanceEnd( this._performance.superOnInit, true );
+
     });
   }
 
