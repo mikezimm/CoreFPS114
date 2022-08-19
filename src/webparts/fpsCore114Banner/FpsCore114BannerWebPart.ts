@@ -226,6 +226,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
      *                                                                                                                         
      */
 
+       // DEFAULTS SECTION:  Performance   <<< ================================================================
        this._performance = createBasePerformanceInit( this.displayMode, false );
        this._performance.superOnInit = startPerformOp( 'superOnInit', this.displayMode );
 
@@ -235,9 +236,6 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
       //This indicates if its SPA, Teams etc.... always keep.
       this.properties.pageLayout =  this.context['_pageLayoutType']?this.context['_pageLayoutType'] : this.context['_pageLayoutType'];
       // this.urlParameters = getUrlVars();
-
-            //Added for ALVFinMan
-      // DEFAULTS SECTION:  Performance   <<< ================================================================
 
       this._FPSUser = getFPSUser( this.context as any, trickyEmails, this._trickyApp ) ;
       console.log( 'FPSUser: ', this._FPSUser );
