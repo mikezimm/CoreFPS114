@@ -13,13 +13,7 @@ import { getWebPartHelpElement } from '../CoreFPS/PropPaneHelp';
 import { getBannerPages, } from './HelpPanel/AllContent';
 import { IBannerPages } from "../fpsReferences";
 
-
-import { createPerformanceTableVisitor, repoLink } from '../fpsReferences';
-
-//For whatever reason, THIS NEEDS TO BE CALLED Directly and NOT through fpsReferences or it gives error.
-import { refreshPanelHTML } from '@mikezimm/npmfunctions/dist/HelpPanelOnNPM/onNpm/WebPartRenderBannerV2';
 import { ILoadPerformance, startPerformOp, updatePerformanceEnd } from "../fpsReferences";
-
 
 //Use this to add more console.logs for this component
 const urlParams : URLSearchParams = new URLSearchParams( window.location.search );
@@ -30,7 +24,6 @@ const consolePrefix: string = 'fpsconsole: FpsCore114Banner';
 export default class FpsCore114Banner extends React.Component<IFpsCore114BannerProps, IFpsCore114BannerState > {
 
   private _performance: ILoadPerformance = null;
-  private _bonusHTML: JSX.Element = null;
 
   private _webPartHelpElement = getWebPartHelpElement( this.props.sitePresets );
   private _contentPages : IBannerPages = getBannerPages( this.props.bannerProps );
@@ -77,9 +70,6 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
   
       if ( this._performance === null ) { this._performance = this.props.performance;  }
 
-      //Update the _bonusHTML if you want now
-      this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
-
       this.state = {
         pinState: this.props.fpsPinMenu.defPinState ? this.props.fpsPinMenu.defPinState : 'normal',
         showDevHeader: false,
@@ -101,9 +91,6 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
       //End tracking performance
       this._performance.fetch1 = updatePerformanceEnd( this._performance.fetch1, true );
-
-      //Update the _bonusHTML if you want now
-      this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
 
       const analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted );
   
@@ -153,13 +140,12 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       //Start tracking performance item
       this._performance.fetch2 = startPerformOp( 'fetch2 TitleText', this.props.displayMode );
 
-      //Do async code here
+      /**
+       *       Do async code here
+       */
 
       //End tracking performance
       this._performance.fetch2 = updatePerformanceEnd( this._performance.fetch2, true );
-
-      //Update the _bonusHTML if you want now
-      this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
 
       if ( fpsconsole === true ) console.log('React componentDidUpdate - this._performance:', JSON.parse(JSON.stringify(this._performance)) );
 
@@ -178,15 +164,19 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
      *    this._replacePanelHTML = refreshPanelHTML( <=== This updates the performance panel content
      */
 
+    const updateThis = this._performance.fetch2 ? 'fetch3' : 'fetch2';
+
     //Start tracking performance
-    this._performance.fetch3 = startPerformOp( 'fetch3 TitleText', this.props.displayMode );
-    //Do async code here
+    this._performance[updateThis] = startPerformOp( `${updateThis} TitleText`, this.props.displayMode );
+
+    /**
+     *       Do async code here
+     */
 
     //End tracking performance
-    this._performance.fetch3 = updatePerformanceEnd( this._performance.fetch3, true );
+    this._performance[updateThis] = updatePerformanceEnd( this._performance[updateThis], true );
 
-    //Update the _bonusHTML if you want now
-    this._bonusHTML = createPerformanceTableVisitor( this._performance, [] );
+    alert(`${[updateThis]} should now be updated`);
 
     if ( fpsconsole === true ) console.log('React - _updatePerformance:', JSON.parse(JSON.stringify(this._performance)) );
 
@@ -238,7 +228,9 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
 
     const Banner = <FetchBanner 
 
-      bonusHTML={ this._bonusHTML }
+      // bonusHTML1={ 'BonusHTML1 Text' }
+      panelPerformance={ this._performance }
+      // bonusHTML2={ <div>BonusHTML2 Div</div> }
 
       parentProps={ this.props }
       parentState={ this.state }
