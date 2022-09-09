@@ -12,9 +12,8 @@ import { DisplayMode, } from '@microsoft/sp-core-library';
  *                                                                                          
  */
 
-import { IFpsCore114BannerProps } from '../components/IFpsCore114BannerProps';
-import { saveAnalytics3, IZLoadAnalytics, IZSentAnalytics, } from '../fpsReferences';
-
+ import { IFpsCore114BannerProps } from '../components/IFpsCore114BannerProps';
+ import { saveAnalytics3, IZLoadAnalytics, IZSentAnalytics,  ILoadPerformance, getMinPerformanceString } from '../fpsReferences';
 
 /***
  *    db       .d88b.   .o88b.  .d8b.  db      
@@ -41,7 +40,7 @@ export const analyticsWeb: string = "/sites/Templates/Analytics/";
  *                                                                                
  */
 
-export function saveViewAnalytics( Title: string, Result: string, thisProps: IFpsCore114BannerProps, analyticsWasExecuted: boolean) : boolean {
+export function saveViewAnalytics( Title: string, Result: string, thisProps: IFpsCore114BannerProps, analyticsWasExecuted: boolean, performanceObj: ILoadPerformance) : boolean {
 
     if ( analyticsWasExecuted === true ) {
       console.log('saved view info already');
@@ -72,6 +71,8 @@ export function saveViewAnalytics( Title: string, Result: string, thisProps: IFp
       console.log( 'zzzRichText1Obj:', zzzRichText1Obj);
       console.log( 'zzzRichText2Obj:', zzzRichText2Obj);
       console.log( 'zzzRichText3Obj:', zzzRichText3Obj);
+
+      const performance : string = getMinPerformanceString( performanceObj );
 
       let zzzRichText1 = null;
       let zzzRichText2 = null;
@@ -121,6 +122,8 @@ export function saveViewAnalytics( Title: string, Result: string, thisProps: IFp
         zzzRichText1: zzzRichText1,  //Used to store JSON objects for later use, will be stringified
         zzzRichText2: zzzRichText2,
         zzzRichText3: zzzRichText3,
+
+        performance: performance,
 
         FPSProps: FPSProps,
 
