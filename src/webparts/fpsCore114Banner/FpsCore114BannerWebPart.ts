@@ -251,7 +251,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
           displayMode: this.displayMode,
           doHeadings: false } ); //doHeadings is currently only used in PageInfo so set to false.
 
-      this._performance.superOnInit = updatePerformanceEnd( this._performance.superOnInit, true );
+      this._performance.superOnInit = updatePerformanceEnd( this._performance.superOnInit, true, 999 );
 
     });
   }
@@ -298,7 +298,7 @@ export default class FpsCore114BannerWebPart extends BaseClientSideWebPart<IFpsC
    * NOTE IN THIS CASE to do it before you refreshPanelHTML :)
    */
 
-    this._performance.renderWebPartStart = updatePerformanceEnd( this._performance.renderWebPartStart, true );
+    this._performance.renderWebPartStart = updatePerformanceEnd( this._performance.renderWebPartStart, true, 999 );
 
     // This gets done a second time if you do not want to pass it in the first time.
     //function visitorPanelInfo(wpProps, repoLinks, bodyText, fromText, loadSummary) {

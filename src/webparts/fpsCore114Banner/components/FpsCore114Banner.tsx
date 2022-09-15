@@ -90,9 +90,9 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
       //Do async code here
 
       //End tracking performance
-      this._performance.fetch1 = updatePerformanceEnd( this._performance.fetch1, true );
+      this._performance.fetch1 = updatePerformanceEnd( this._performance.fetch1, true, 999 );
 
-      const analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted );
+      const analyticsWasExecuted = saveViewAnalytics( 'FPS Core114 Banner View', 'didMount' , this.props, this.state.analyticsWasExecuted, this._performance );
   
       if ( this.state.analyticsWasExecuted !==  analyticsWasExecuted ) {
         this.setState({ analyticsWasExecuted: analyticsWasExecuted });
@@ -145,7 +145,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
        */
 
       //End tracking performance
-      this._performance.fetch2 = updatePerformanceEnd( this._performance.fetch2, true );
+      this._performance.fetch2 = updatePerformanceEnd( this._performance.fetch2, true, 999 );
 
       if ( fpsconsole === true ) console.log('React componentDidUpdate - this._performance:', JSON.parse(JSON.stringify(this._performance)) );
 
@@ -174,7 +174,7 @@ export default class FpsCore114Banner extends React.Component<IFpsCore114BannerP
      */
 
     //End tracking performance
-    this._performance[updateThis] = updatePerformanceEnd( this._performance[updateThis], true );
+    this._performance[updateThis] = updatePerformanceEnd( this._performance[updateThis], true, 999 );
 
     alert(`${[updateThis]} should now be updated`);
 
